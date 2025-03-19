@@ -1,0 +1,3 @@
+- Update shelf to hold X amount of items and display how many items left (2 hrs) [By March 21]
+- Create script for NPCs to take items from shelves (2 hr) [By March 24]
+- Implement how and when a player can restock (3 hrs) [By March 27]
