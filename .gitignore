@@ -4,8 +4,10 @@ Builds/Android/
 Builds/Windows/
 Builds/MacOS/
 
-# Re-allow builds for UIC lol
-!/Output/*
+# Re-allow specific builds for UIC lol
+/Output
+#!/Output/Windows-0.0.1
+
 
 # We dont need these unless we want them...
 .idea/
