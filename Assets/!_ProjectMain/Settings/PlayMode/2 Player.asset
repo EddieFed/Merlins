@@ -41,7 +41,7 @@ MonoBehaviour:
   - Name: Player1
     <CorrespondingNodeId>k__BackingField: 
     m_Nodes: []
-    m_BuildProfile: {fileID: 11400000, guid: a36c6bcb0038d7b449e806c1de124dfe, type: 2}
+    m_BuildProfile: {fileID: 11400000, guid: 231f3224dad49f146b3bd65c6f50bc66, type: 2}
     advancedConfiguration:
       m_StreamLogsToMainEditor: 1
       m_LogsColor: {r: 0.3643, g: 0.581, b: 0.8679, a: 1}
@@ -49,7 +49,7 @@ MonoBehaviour:
   - Name: Player2
     <CorrespondingNodeId>k__BackingField: 
     m_Nodes: []
-    m_BuildProfile: {fileID: 11400000, guid: a36c6bcb0038d7b449e806c1de124dfe, type: 2}
+    m_BuildProfile: {fileID: 11400000, guid: 231f3224dad49f146b3bd65c6f50bc66, type: 2}
     advancedConfiguration:
       m_StreamLogsToMainEditor: 1
       m_LogsColor: {r: 0.36470592, g: 0.8666667, b: 0.65825063, a: 1}
