@@ -77,13 +77,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  goal: 1
   moveTime: 0
-  maxMoveTime: 5.82
+  maxMoveTime: 6.32
   waitTime: 0
   maxWaitTime: 3.71
-  speed: 2.04
+  speed: 4.47
   agent: {fileID: 0}
+  currentDestination: {fileID: 0}
   shelveLocation: {fileID: 0}
+  exitLocation: {fileID: 0}
 --- !u!114 &6612248407506815989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5034421607884198006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29ff052ce49f91841ba5f64f18904f6e, type: 3}
   m_Name: 
