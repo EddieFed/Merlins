@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class CustomerSpawner : MonoBehaviour
 {
@@ -8,11 +13,18 @@ public class CustomerSpawner : MonoBehaviour
     public float currDelayTime;
     public GameObject customerPrefab;
 
+    public GameObject shelveGroup;
+    public static List<Transform> shelveLocations;
+
     public Transform spawnPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
+        shelveLocations = new List<Transform>();
+        foreach (Transform child in shelveGroup.transform)
+        {
+            shelveLocations.Add(child);
+        }
     }
 
     // Update is called once per frame
@@ -30,5 +42,10 @@ public class CustomerSpawner : MonoBehaviour
         }
 
         currDelayTime -= 1 * Time.deltaTime;
+    }
+
+    public static Transform GetShelveLocation()
+    {
+        return shelveLocations[Random.Range(0, shelveLocations.Count)];
     }
 }
