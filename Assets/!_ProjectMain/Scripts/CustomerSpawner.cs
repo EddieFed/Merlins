@@ -14,8 +14,11 @@ public class CustomerSpawner : MonoBehaviour
     public GameObject customerPrefab;
 
     public GameObject shelveGroup;
+    public GameObject entranceGroup;
+    public GameObject registerGroup;
     public static List<Transform> shelveLocations;
-
+    public static List<Transform> entranceLocations;
+    public static List<Transform> registerLocations;
     public Transform spawnPoint;
 
     private void Start()
@@ -24,6 +27,18 @@ public class CustomerSpawner : MonoBehaviour
         foreach (Transform child in shelveGroup.transform)
         {
             shelveLocations.Add(child);
+        }
+        
+        entranceLocations = new List<Transform>();
+        foreach (Transform child in entranceGroup.transform)
+        {
+            entranceLocations.Add(child);
+        }
+        
+        registerLocations = new List<Transform>();
+        foreach (Transform child in registerGroup.transform)
+        {
+            registerLocations.Add(child);
         }
     }
 
@@ -47,5 +62,14 @@ public class CustomerSpawner : MonoBehaviour
     public static Transform GetShelveLocation()
     {
         return shelveLocations[Random.Range(0, shelveLocations.Count)];
+    }
+    
+    public static Transform GetEntranceLocation()
+    {
+        return entranceLocations[Random.Range(0, entranceLocations.Count)];
+    }
+    public static Transform GetRegisterLocation()
+    {
+        return registerLocations[Random.Range(0, registerLocations.Count)];
     }
 }
