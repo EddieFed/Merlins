@@ -1469,10 +1469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c578a8d7fc09fa4eaee4066c2ed7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batPrefab: {fileID: 0}
+  batPrefab: {fileID: 6646497222628962001, guid: ba6b1c59161b0fd4282fb51c969fc1aa, type: 3}
   numBats: 20
   allBats: []
   flyLimits: {x: 5, y: 5, z: 5}
+  minSpeed: 1
+  maxSpeed: 2
 --- !u!4 &1192997594
 Transform:
   m_ObjectHideFlags: 0
