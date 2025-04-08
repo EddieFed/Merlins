@@ -25,6 +25,8 @@ public class FlockManager : MonoBehaviour
                                                                 Random.Range(-flyLimits.z, flyLimits.z));
             Instantiate(batPrefab, pos, Quaternion.identity);
         }
+
+        FM = this;
     }
 
     // Update is called once per frame
