@@ -1,0 +1,3 @@
+NPCs spawned on a timer from entrace point up to a roomlimit (2hrs) by:3/18
+Script for NPCs reaching an exit to update the room population and increment a score counter (2 hrs) by:3/20
+Implement ground hazard puddles and slime that disable the user's movement for a short duration and/or apply a force to fling or misdirect them (4hrs) by: 3/22
