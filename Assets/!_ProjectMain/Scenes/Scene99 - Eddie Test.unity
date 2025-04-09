@@ -1613,6 +1613,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 2141609782}
   maxDelayTime: 5
   currDelayTime: 0
+  shelveGroup: {fileID: 729099417}
 --- !u!1001 &1190439244
 PrefabInstance:
   m_ObjectHideFlags: 0
