@@ -36,7 +36,7 @@ public class SlimeAnimate : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        currentDestination = CustomerSpawner.GetShelveLocation();
+        currentDestination = SlimeSpawner.GetShelveLocation();
         state = STATE.MOVING;
         goal = GOAL.EAT_STOCK;
     }
