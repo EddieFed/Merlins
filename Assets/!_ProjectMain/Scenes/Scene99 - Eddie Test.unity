@@ -1474,7 +1474,8 @@ MonoBehaviour:
   allBats: []
   flyLimits: {x: 5, y: 5, z: 5}
   minSpeed: 1
-  maxSpeed: 2
+  maxSpeed: 5
+  neighbourDistance: 2
 --- !u!4 &1192997594
 Transform:
   m_ObjectHideFlags: 0
