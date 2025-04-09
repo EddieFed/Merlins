@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeSpawner : MonoBehaviour
@@ -8,11 +9,17 @@ public class SlimeSpawner : MonoBehaviour
     public Transform spawnPoint;
     public float maxDelayTime;
     public float currDelayTime;
+    public GameObject shelveGroup;
+    public static List<Transform> shelveLocations;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        shelveLocations = new List<Transform>();
+        foreach (Transform child in shelveGroup.transform)
+        {
+            shelveLocations.Add(child);
+        }
     }
 
     // Update is called once per frame
@@ -24,5 +31,10 @@ public class SlimeSpawner : MonoBehaviour
             currSlimeCount++;
             currDelayTime = maxDelayTime;
         }
+    }
+    
+    public static Transform GetShelveLocation()
+    {
+        return shelveLocations[Random.Range(0, shelveLocations.Count)];
     }
 }
