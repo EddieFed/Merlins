@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 05748777faed4b138a9efedfa00c10ad
+AssetOrigin:
+  serializedVersion: 1
+  productId: 168251
+  packageName: RPG Monster Partners PBR Polyart
+  packageVersion: 1.5
+  assetPath: Assets/RPGMonsterPartnersPBRPolyart/Meshes/Character/ChestMonsterPolyartMesh.fbx
+  uploadId: 598502
 ModelImporter:
-  serializedVersion: 20300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -159,9 +166,14 @@ ModelImporter:
   - first:
       137: 13700000
     second: ChestMesh
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: d5f584e7bf57b81459f3114dce83a2c0, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -170,9 +182,8 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -195,10 +206,12 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -210,6 +223,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -220,6 +234,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 0
     normalImportMode: 1
@@ -252,15 +267,9 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 168251
-  packageName: RPG Monster Partners PBR Polyart
-  packageVersion: 1.5
-  assetPath: Assets/RPGMonsterPartnersPBRPolyart/Meshes/Character/ChestMonsterPolyartMesh.fbx
-  uploadId: 598502
