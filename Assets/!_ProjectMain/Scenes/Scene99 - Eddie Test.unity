@@ -1470,12 +1470,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batPrefab: {fileID: 6646497222628962001, guid: ba6b1c59161b0fd4282fb51c969fc1aa, type: 3}
-  numBats: 20
+  numBats: 28
   allBats: []
   flyLimits: {x: 5, y: 5, z: 5}
-  minSpeed: 1
-  maxSpeed: 5
-  neighbourDistance: 2
+  goalPosition: {x: 0, y: 0, z: 0}
+  minSpeed: 1.37
+  maxSpeed: 3.89
+  neighbourDistance: 2.34
+  avoidDistance: 1
+  rotationSpeed: 3.21
 --- !u!4 &1192997594
 Transform:
   m_ObjectHideFlags: 0
