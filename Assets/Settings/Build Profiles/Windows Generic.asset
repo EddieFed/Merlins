@@ -18,13 +18,12 @@ MonoBehaviour:
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
     rid: 6524658559384027208
-  m_OverrideGlobalSceneList: 0
+  m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/Scene00_Main_Menu_Lobby.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/Scene01_Supermarket.unity
-  m_ScriptingDefines: []
+    m_path: Assets/!_ProjectMain/Scenes/Scene99 - Eddie Test.unity
+  m_ScriptingDefines:
+  - 
   m_PlayerSettingsYaml:
     m_Settings: []
   references:
@@ -33,7 +32,7 @@ MonoBehaviour:
     - rid: 6524658559384027208
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
-        m_Development: 0
+        m_Development: 1
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
         m_AllowDebugging: 0

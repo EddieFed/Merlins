@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/!_ProjectMain/Scenes/Scene00 - Main Menu.unity
-    guid: 52f585e314db8c54cbc6498666dd93d2
+    path: Assets/!_ProjectMain/Scenes/Scene99 - Eddie Test.unity
+    guid: 5077a40bb1c109f468e9c3e63e266da5
   - enabled: 1
-    path: Assets/!_ProjectMain/Scenes/Scene01 - Supermarket.unity
-    guid: 04cd1f3aa9b82d345a835204bb877d4e
+    path: Assets/!_ProjectMain/Scenes/Scene00 - Main Menu.unity
+    guid: 76251a271479f2b47a4a84da1ebc1e2b
   - enabled: 1
     path: Assets/!_ProjectMain/Scenes/Scene01 - Supermarket.unity
     guid: 708982b7de4cea8438dd2c0f936a161d
   - enabled: 1
-    path: Assets/!_ProjectMain/Scenes/Scene99 - Eddie Test.unity
-    guid: 5077a40bb1c109f468e9c3e63e266da5
+    path: Assets/!_ProjectMain/Scenes/Scene01 - Supermarket.unity
+    guid: 708982b7de4cea8438dd2c0f936a161d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
