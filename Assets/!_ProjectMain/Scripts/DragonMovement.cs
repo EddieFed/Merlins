@@ -24,12 +24,13 @@ namespace __ProjectMain.Scripts
             currentDestination = this.transform;
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            timePassed = 50f;
         }
         
         private void Update()
         {
             timePassed += Time.deltaTime;
-            if (timePassed > 5f)
+            if (timePassed > 50f)
             {
                 DragonAI.Distance distance = DragonAI.Distance.Far; 
                 GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
