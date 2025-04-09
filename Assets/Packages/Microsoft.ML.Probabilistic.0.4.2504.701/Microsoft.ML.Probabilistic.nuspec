@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.ML.Probabilistic</id>
+    <version>0.4.2504.701</version>
+    <authors>Microsoft</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>infernet.png</icon>
+    <projectUrl>https://dotnet.github.io/infer</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/dotnet/infer/main/docs/images/infernet.png</iconUrl>
+    <description>Infer.NET is a framework for running Bayesian inference in graphical models. It can also be used for probabilistic programming. This package contains classes and methods needed to execute the inference code.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Infer.NET machine learning Bayesian inference probabilistic</tags>
+    <repository type="git" url="https://github.com/dotnet/infer.git" commit="24bb52717a49a67f60e94c34451c0195a16ec99d" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>
