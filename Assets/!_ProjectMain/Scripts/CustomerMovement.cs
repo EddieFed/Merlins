@@ -27,7 +27,7 @@ namespace __ProjectMain.Scripts
         public Transform exitLocation;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        protected void Start()
         {
             state = State.MOVING;
             goal = Goal.SHOP;
@@ -36,7 +36,7 @@ namespace __ProjectMain.Scripts
         }
 
         // Update is called once per frame
-        void Update()
+        protected void Update()
         {
             float radius = 2f;
             float sqrRadius = radius * radius;
@@ -68,7 +68,7 @@ namespace __ProjectMain.Scripts
             }
         }
 
-        void DestinationReached()
+        protected void DestinationReached()
         {
             // play animation
             // stop movement for animation time

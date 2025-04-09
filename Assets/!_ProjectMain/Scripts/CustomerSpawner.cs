@@ -50,7 +50,8 @@ namespace __ProjectMain.Scripts
                 // create new customer
                 if (currCustomerCount < customerLimit)
                 {
-                    Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+                    GameObject customer = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+                    customer.tag = "Customer";
                     currCustomerCount++;
                     currDelayTime = maxDelayTime;
                 }

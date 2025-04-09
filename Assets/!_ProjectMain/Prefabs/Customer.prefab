@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6612248407506815989}
   - component: {fileID: 3443665881863884038}
   - component: {fileID: 3020832935005420650}
+  - component: {fileID: -2052537644939802174}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -136,6 +137,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   agent: {fileID: 0}
+--- !u!136 &-2052537644939802174
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034421607884198006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.9682064
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4841032, z: 0}
 --- !u!1001 &352577220604659231
 PrefabInstance:
   m_ObjectHideFlags: 0
