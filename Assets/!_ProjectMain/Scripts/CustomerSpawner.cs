@@ -1,75 +1,76 @@
-using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-public class CustomerSpawner : MonoBehaviour
+namespace __ProjectMain.Scripts
 {
-    public int customerLimit;
-    public int currCustomerCount;
-    public float maxDelayTime;
-    public float currDelayTime;
-    public GameObject customerPrefab;
-
-    public GameObject shelveGroup;
-    public GameObject entranceGroup;
-    public GameObject registerGroup;
-    public static List<Transform> shelveLocations;
-    public static List<Transform> entranceLocations;
-    public static List<Transform> registerLocations;
-    public Transform spawnPoint;
-
-    private void Start()
+    public class CustomerSpawner : MonoBehaviour
     {
-        shelveLocations = new List<Transform>();
-        foreach (Transform child in shelveGroup.transform)
-        {
-            shelveLocations.Add(child);
-        }
-        
-        entranceLocations = new List<Transform>();
-        foreach (Transform child in entranceGroup.transform)
-        {
-            entranceLocations.Add(child);
-        }
-        
-        registerLocations = new List<Transform>();
-        foreach (Transform child in registerGroup.transform)
-        {
-            registerLocations.Add(child);
-        }
-    }
+        public int customerLimit;
+        public int currCustomerCount;
+        public float maxDelayTime;
+        public float currDelayTime;
+        public GameObject customerPrefab;
+        public GameObject dragonPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (currDelayTime <= 0)
+        public GameObject shelveGroup;
+        public GameObject entranceGroup;
+        public GameObject registerGroup;
+        public static List<Transform> shelveLocations;
+        public static List<Transform> entranceLocations;
+        public static List<Transform> registerLocations;
+        public Transform spawnPoint;
+
+        private void Start()
         {
-            // create new customer
-            if (currCustomerCount < customerLimit)
+            shelveLocations = new List<Transform>();
+            foreach (Transform child in shelveGroup.transform)
             {
-                Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
-                currCustomerCount++;
-                currDelayTime = maxDelayTime;
+                shelveLocations.Add(child);
+            }
+        
+            entranceLocations = new List<Transform>();
+            foreach (Transform child in entranceGroup.transform)
+            {
+                entranceLocations.Add(child);
+            }
+        
+            registerLocations = new List<Transform>();
+            foreach (Transform child in registerGroup.transform)
+            {
+                registerLocations.Add(child);
             }
         }
 
-        currDelayTime -= 1 * Time.deltaTime;
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (currDelayTime <= 0)
+            {
+                // create new customer
+                if (currCustomerCount < customerLimit)
+                {
+                    Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+                    currCustomerCount++;
+                    currDelayTime = maxDelayTime;
+                }
+            }
 
-    public static Transform GetShelveLocation()
-    {
-        return shelveLocations[Random.Range(0, shelveLocations.Count)];
-    }
+            currDelayTime -= 1 * Time.deltaTime;
+        }
+
+        public static Transform GetShelveLocation()
+        {
+            return shelveLocations[Random.Range(0, shelveLocations.Count)];
+        }
     
-    public static Transform GetEntranceLocation()
-    {
-        return entranceLocations[Random.Range(0, entranceLocations.Count)];
-    }
-    public static Transform GetRegisterLocation()
-    {
-        return registerLocations[Random.Range(0, registerLocations.Count)];
+        public static Transform GetEntranceLocation()
+        {
+            return entranceLocations[Random.Range(0, entranceLocations.Count)];
+        }
+        public static Transform GetRegisterLocation()
+        {
+            return registerLocations[Random.Range(0, registerLocations.Count)];
+        }
     }
 }

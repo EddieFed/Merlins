@@ -2,19 +2,19 @@ using UnityEngine;
 
 namespace __ProjectMain.Scripts
 {
-    public class Rotate : MonoBehaviour
+    public class Flock : MonoBehaviour
     {
-        public float rotateSpeed;
+        private float speed;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            speed = Random.Range(FlockManager.FM.minSpeed, FlockManager.FM.maxSpeed);
         }
 
         // Update is called once per frame
         void Update()
         {
-            transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
+            this.transform.Translate(0,0, speed * Time.deltaTime);
         }
     }
 }

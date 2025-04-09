@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace __ProjectMain.Scripts
 {
-    public class Rotate : MonoBehaviour
+    public class Register : MonoBehaviour
     {
-        public float rotateSpeed;
+    
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -14,7 +14,7 @@ namespace __ProjectMain.Scripts
         // Update is called once per frame
         void Update()
         {
-            transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
+        
         }
     }
 }
