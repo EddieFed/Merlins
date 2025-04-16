@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +12,8 @@ namespace __ProjectMain.Scripts
         {
             SHOP,
             PURCHASE,
-            EXIT
+            EXIT,
+            FLEE
         }
         public State state;
         public Goal goal = Goal.PURCHASE;
@@ -26,6 +28,32 @@ namespace __ProjectMain.Scripts
         public Transform shelveLocation;
         public Transform exitLocation;
 
+        public float maxIFrame = 10f;
+        public float currIFrame = 0;
+        public float health = 100f;
+        
+        public bool isDead = false;
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                if (currIFrame <= 0)
+                {
+                    currIFrame = maxIFrame;
+                    health -= 10;
+                }
+
+                if (health <= 0 && !isDead)
+                {
+                    isDead = true;
+                    health = 0;
+                    speed = speed * 4;
+                }
+                
+            }
+        }
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
@@ -38,6 +66,14 @@ namespace __ProjectMain.Scripts
         // Update is called once per frame
         protected void Update()
         {
+            currIFrame -= 1;
+            if (health <= 0 && goal != Goal.FLEE)
+            {
+                goal = Goal.FLEE;
+                state = State.MOVING;
+                moveTime = 0;
+                currentDestination = CustomerSpawner.GetEntranceLocation();
+            }
             float radius = 2f;
             float sqrRadius = radius * radius;
             if ((transform.position - currentDestination.position).sqrMagnitude <= sqrRadius)
@@ -86,6 +122,9 @@ namespace __ProjectMain.Scripts
                     currentDestination = CustomerSpawner.GetEntranceLocation();
                     break;
                 case Goal.EXIT:
+                    Destroy(gameObject);
+                    break;
+                case Goal.FLEE:
                     Destroy(gameObject);
                     break;
             }
