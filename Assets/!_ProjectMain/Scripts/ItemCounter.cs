@@ -6,7 +6,8 @@ public class ItemCounter : MonoBehaviour
 {
     public int itemCount = 10;
     public int maxItems = 10;
-    public TextMeshPro stockCountText;
+    [SerializeField] private TextMeshPro stockCountText;
+    [SerializeField] private MeshRenderer meshRenderer;
     
     private void OnCollisionEnter(Collision other)
     {
@@ -18,9 +19,9 @@ public class ItemCounter : MonoBehaviour
     {
         stockCountText.text = itemCount + "/" + maxItems;
         
-        // if (itemCount == 0)
-        //     GetComponent<MeshRenderer>().material.color = Color.red;
-        // else
-        //     GetComponent<MeshRenderer>().material.color = Color.green;
+        if (itemCount == 0)
+            meshRenderer.material.color = Color.red;
+        else
+            meshRenderer.material.color = Color.green;
     }
 }
