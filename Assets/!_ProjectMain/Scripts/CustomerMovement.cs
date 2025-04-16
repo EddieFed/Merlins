@@ -21,17 +21,18 @@ namespace __ProjectMain.Scripts
         public float maxWaitTime;
         public float speed;
         public NavMeshAgent agent;
-    
+
+        public int itemValue;
         public Transform currentDestination;
-        public Transform shelveLocation;
-        public Transform exitLocation;
+        public Transform currentShelf;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
             state = State.MOVING;
             goal = Goal.SHOP;
-            currentDestination = CustomerSpawner.GetShelveLocation();
+            currentShelf = CustomerSpawner.GetShelf();
+            currentDestination = CustomerSpawner.GetShelfLocation(currentShelf);
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -78,10 +79,17 @@ namespace __ProjectMain.Scripts
             {
                 // Choose next goal (may reroll another of same goal type
                 case Goal.SHOP:
-                    goal = Goal.PURCHASE;
-                    currentDestination = CustomerSpawner.GetRegisterLocation();
+                    if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount > 0)
+                    {
+                        itemValue = Random.Range(currentShelf.gameObject.GetComponent<ItemCounter>().minPrice,
+                            currentShelf.gameObject.GetComponent<ItemCounter>().maxPrice);
+                        currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
+                        goal = Goal.PURCHASE;
+                        currentDestination = CustomerSpawner.GetRegisterLocation();
+                    }
                     break;
                 case Goal.PURCHASE:
+                    GameManager.bankValue += itemValue;
                     goal = Goal.EXIT;
                     currentDestination = CustomerSpawner.GetEntranceLocation();
                     break;

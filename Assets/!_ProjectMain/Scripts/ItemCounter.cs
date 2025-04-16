@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using __ProjectMain.Scripts;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class ItemCounter : MonoBehaviour
     public int minPrice = 5;
     public int maxPrice = 10;
     public TextMeshPro stockCountText;
+    public GameObject targetGroup;
+    public List<Transform> destinations;
     
     private void OnCollisionEnter(Collision other)
     {
@@ -29,6 +32,11 @@ public class ItemCounter : MonoBehaviour
     void Start()
     {
         GetComponent<MeshRenderer>().material.color = shelfColor;
+        destinations = new List<Transform>();
+        foreach (Transform child in targetGroup.transform)
+        {
+            destinations.Add(child);
+        }
     }
 
     private void Update()

@@ -60,9 +60,14 @@ namespace __ProjectMain.Scripts
             currDelayTime -= 1 * Time.deltaTime;
         }
 
-        public static Transform GetShelveLocation()
+        public static Transform GetShelf()
         {
             return shelveLocations[Random.Range(0, shelveLocations.Count)];
+        }
+        
+        public static Transform GetShelfLocation(Transform shelf)
+        {
+            return shelf.GetComponent<ItemCounter>().destinations[Random.Range(0, shelf.GetComponent<ItemCounter>().destinations.Count)];
         }
     
         public static Transform GetEntranceLocation()
