@@ -76,6 +76,7 @@ namespace __ProjectMain.Scripts
             {
                 goal = Goal.FLEE;
                 state = State.MOVING;
+                maxMoveTime = 999;
                 moveTime = 0;
                 currentDestination = CustomerSpawner.GetEntranceLocation().transform;
             }
