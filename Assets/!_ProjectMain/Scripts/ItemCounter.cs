@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class ItemCounter : MonoBehaviour
 {
+    private List<Color> stockColors;
     public Color shelfColor;
     public int itemCount;
     public int maxItems = 10;
@@ -37,14 +38,19 @@ public class ItemCounter : MonoBehaviour
     
     void Start()
     {
+        
+        stockColors = new List<Color>
+        {
+            Color.blue,
+            Color.magenta,
+            Color.yellow
+        };
+        shelfColor = stockColors[Random.Range(0, stockColors.Count)];
         meshRenderer.material.color = shelfColor;
         itemCount = Random.Range(1, maxItems);
         _audioSource = GetComponent<AudioSource>();
         destinations = new List<Transform>();
-        foreach (Transform child in targetGroup.transform)
-        {
-            destinations.Add(child);
-        }
+        destinations.Add(transform);
     }
 
     private void Update()

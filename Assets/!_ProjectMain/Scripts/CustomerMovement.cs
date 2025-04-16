@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace __ProjectMain.Scripts
 {
@@ -34,7 +35,7 @@ namespace __ProjectMain.Scripts
             state = State.MOVING;
             goal = Goal.SHOP;
             currentShelf = CustomerSpawner.GetShelf();
-            currentDestination = CustomerSpawner.GetShelfLocation(currentShelf);
+            currentDestination = currentShelf;
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -89,13 +90,12 @@ namespace __ProjectMain.Scripts
                             currentShelf.gameObject.GetComponent<ItemCounter>().maxPrice);
                         currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
                         goal = Goal.PURCHASE;
-                        currentDestination = CustomerSpawner.GetRegisterLocation();
+                        currentDestination = CustomerSpawner.GetRegisterLocation().transform;
                     }
                     break;
                 case Goal.PURCHASE:
-                    GameManager.bankValue += itemValue;
                     goal = Goal.EXIT;
-                    currentDestination = CustomerSpawner.GetEntranceLocation();
+                    currentDestination = CustomerSpawner.GetEntranceLocation().transform;
                     break;
                 case Goal.EXIT:
                     Destroy(gameObject);

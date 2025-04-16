@@ -19,8 +19,8 @@ namespace __ProjectMain.Scripts
 
         private void Start()
         {
-            state = State.Moving;
-            goal = Goal.Shop;
+            state = State.MOVING;
+            goal = Goal.SHOP;
             currentDestination = this.transform;
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
@@ -64,24 +64,24 @@ namespace __ProjectMain.Scripts
                 DestinationReached();
             }
         
-            if (state == State.Moving && moveTime > maxMoveTime)
+            if (state == State.MOVING && moveTime > maxMoveTime)
             {
                 waitTime = 0;
-                state = State.Idle;
+                state = State.IDLE;
             }
-            if (state == State.Idle && waitTime > maxWaitTime)
+            if (state == State.IDLE && waitTime > maxWaitTime)
             {
-                state = State.Moving;
+                state = State.MOVING;
                 moveTime = 0;
             }
             switch (state)
             {
-                case State.Moving:
+                case State.MOVING:
                     animator.Play("axe|walk");
                     agent.SetDestination(currentDestination.position);
                     moveTime += 1 * Time.deltaTime;
                     break;
-                case State.Idle:
+                case State.IDLE:
                     animator.Play("axe|idle");
                     agent.SetDestination(transform.position);
                     waitTime += 1 * Time.deltaTime;
