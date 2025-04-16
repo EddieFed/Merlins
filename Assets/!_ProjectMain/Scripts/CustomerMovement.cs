@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,66 +6,69 @@ namespace __ProjectMain.Scripts
 {
     public class CustomerMovement : MonoBehaviour
     {
-        public enum State {IDLE, MOVING}
+        public enum State {Idle, Moving}
 
         public enum Goal
         {
-            SHOP,
-            PURCHASE,
-            EXIT
+            Shop,
+            Purchase,
+            Exit
         }
+        
         public State state;
-        public Goal goal = Goal.PURCHASE;
+        public Goal goal = Goal.Purchase;
         public float moveTime;
         public float maxMoveTime;
         public float waitTime;
         public float maxWaitTime;
         public float speed;
-        public NavMeshAgent agent;
+        protected NavMeshAgent agent;
     
-        public Transform currentDestination;
-        public Transform shelveLocation;
-        public Transform exitLocation;
+        protected Transform currentDestination;
+        protected Transform shelveLocation;
+        protected Transform exitLocation;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
-            state = State.MOVING;
-            goal = Goal.SHOP;
-            currentDestination = CustomerSpawner.GetShelveLocation();
+            state = State.Moving;
+            goal = Goal.Shop;
+            currentDestination = CustomerSpawner.GetShelveLocation().transform;
             agent = GetComponent<NavMeshAgent>();
         }
 
         // Update is called once per frame
         protected void Update()
         {
-            float radius = 2f;
-            float sqrRadius = radius * radius;
+            const float radius = 2f;
+            const float sqrRadius = radius * radius;
             if ((transform.position - currentDestination.position).sqrMagnitude <= sqrRadius)
             {
                 DestinationReached();
             }
         
-            if (state == State.MOVING && moveTime > maxMoveTime)
+            if (state == State.Moving && moveTime > maxMoveTime)
             {
                 waitTime = 0;
-                state = State.IDLE;
+                state = State.Idle;
             }
-            if (state == State.IDLE && waitTime > maxWaitTime)
+            if (state == State.Idle && waitTime > maxWaitTime)
             {
-                state = State.MOVING;
+                state = State.Moving;
                 moveTime = 0;
             }
             switch (state)
             {
-                case State.MOVING:
+                case State.Moving:
                     agent.SetDestination(currentDestination.position);
                     moveTime += 1 * Time.deltaTime;
                     break;
-                case State.IDLE:
+                case State.Idle:
                     agent.SetDestination(transform.position);
                     waitTime += 1 * Time.deltaTime;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -72,22 +76,24 @@ namespace __ProjectMain.Scripts
         {
             // play animation
             // stop movement for animation time
-            state = State.IDLE;
+            state = State.Idle;
             waitTime = 0;
             switch (goal)
             {
                 // Choose next goal (may reroll another of same goal type
-                case Goal.SHOP:
-                    goal = Goal.PURCHASE;
-                    currentDestination = CustomerSpawner.GetRegisterLocation();
+                case Goal.Shop:
+                    goal = Goal.Purchase;
+                    currentDestination = CustomerSpawner.GetRegisterLocation().transform;
                     break;
-                case Goal.PURCHASE:
-                    goal = Goal.EXIT;
-                    currentDestination = CustomerSpawner.GetEntranceLocation();
+                case Goal.Purchase:
+                    goal = Goal.Exit;
+                    currentDestination = CustomerSpawner.GetEntranceLocation().transform;
                     break;
-                case Goal.EXIT:
+                case Goal.Exit:
                     Destroy(gameObject);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

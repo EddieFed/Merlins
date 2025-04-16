@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 5034421607884198006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.82, y: 1.02, z: 4.662}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -17.82, y: 1.5, z: 4.662}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 247172826483941876}
@@ -84,10 +84,6 @@ MonoBehaviour:
   waitTime: 0
   maxWaitTime: 3.71
   speed: 4.47
-  agent: {fileID: 0}
-  currentDestination: {fileID: 0}
-  shelveLocation: {fileID: 0}
-  exitLocation: {fileID: 0}
 --- !u!114 &6612248407506815989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,10 +204,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7601226680800833775, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d8a059898fc6ac5408a373e0821d82a4, type: 2}
     - target: {fileID: 919132149155446097, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_Name
       value: Lowpoly Wizard Dude
       objectReference: {fileID: 0}
+    - target: {fileID: 1541998606474349963, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d8a059898fc6ac5408a373e0821d82a4, type: 2}
+    - target: {fileID: 6317578925029434746, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fbc8e0e4b63ebd548bdbc580329a033e, type: 2}
+    - target: {fileID: 6829333093618665122, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fbc8e0e4b63ebd548bdbc580329a033e, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d8a059898fc6ac5408a373e0821d82a4, type: 2}
+    - target: {fileID: 8100320773420232829, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fbc8e0e4b63ebd548bdbc580329a033e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
