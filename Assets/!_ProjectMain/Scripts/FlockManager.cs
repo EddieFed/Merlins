@@ -18,6 +18,8 @@ public class FlockManager : MonoBehaviour
 
     public float respawnTimer = 120f;
     public float maxRespawnTime = 120f;
+    
+    public AudioSource audioSource;
 
     [Header("Bat Settings")] [Range(0.0f, 5.0f)]
     public float minSpeed = 1.0f;
@@ -84,6 +86,7 @@ public class FlockManager : MonoBehaviour
             {
                 isDead = false;
                 SpawnBats();
+                audioSource.Play();
             }
 
             return;
@@ -92,6 +95,7 @@ public class FlockManager : MonoBehaviour
         {
             isDead = true;
             respawnTimer = maxRespawnTime;
+            audioSource.Stop();
             foreach (var bat in allBats)
             {
                 Destroy(bat);

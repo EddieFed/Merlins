@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 5689037714855861907}
   m_Layer: 0
   m_Name: fly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9da030b34ca9344a81367119f9f00b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  turning: 0
   touchCustomer: 0
   FM: {fileID: 0}
 --- !u!54 &5689037714855861907

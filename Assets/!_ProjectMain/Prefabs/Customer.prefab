@@ -88,6 +88,10 @@ MonoBehaviour:
   currentDestination: {fileID: 0}
   shelveLocation: {fileID: 0}
   exitLocation: {fileID: 0}
+  maxIFrame: 10
+  currIFrame: 0
+  health: 100
+  isDead: 0
 --- !u!114 &6612248407506815989
 MonoBehaviour:
   m_ObjectHideFlags: 0
