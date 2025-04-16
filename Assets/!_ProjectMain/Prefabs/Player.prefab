@@ -260,6 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  _playerTransform: {fileID: 2003975741278176200}
+  heldRestock: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &2037091773458654243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,19 +284,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.679086
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7340588
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -302,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 265.54498
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85923adeea90ee34ab96b44edb58926e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

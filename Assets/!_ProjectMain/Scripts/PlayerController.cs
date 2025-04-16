@@ -6,8 +6,21 @@ namespace __ProjectMain.Scripts
 {
     public class PlayerController : NetworkBehaviour
     {
+        private Rigidbody rb;
+        [SerializeField] private Transform playerTransform;
+        
         // Clear is used as a placeholder, indicating that the player is not holding any item
         public Color heldRestock = Color.clear;
+
+        private void Start()
+        {
+            if (playerTransform == null)
+            {
+                Debug.LogError("Player transform is null, assign it to Wizard dude prefab!!!!");
+            }
+            rb = GetComponent<Rigidbody>();
+        }
+        
         private void Update()
         {
             Vector3 movement = new Vector3(0f, 0f, 0f);
@@ -27,7 +40,10 @@ namespace __ProjectMain.Scripts
             {
                 movement += new Vector3(10f, 0f, -10f);
             }
-            transform.Translate(movement * Time.deltaTime);
+            
+            rb.linearVelocity = movement;
+            playerTransform.LookAt(transform.position + movement);
+
         }
     }
 }
