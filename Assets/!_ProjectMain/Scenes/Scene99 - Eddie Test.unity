@@ -1679,7 +1679,6 @@ GameObject:
   - component: {fileID: 1129520414}
   - component: {fileID: 1129520413}
   - component: {fileID: 1129520415}
-  - component: {fileID: 1129520416}
   m_Layer: 0
   m_Name: NPC Manager
   m_TagString: Untagged
@@ -1742,28 +1741,6 @@ MonoBehaviour:
   maxDelayTime: 5
   currDelayTime: 0
   shelveGroup: {fileID: 729099417}
---- !u!114 &1129520416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129520412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c578a8d7fc09fa4eaee4066c2ed7086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batPrefab: {fileID: 6646497222628962001, guid: ba6b1c59161b0fd4282fb51c969fc1aa, type: 3}
-  numBats: 14
-  allBats: []
-  flyLimits: {x: 3.28, y: 2.64, z: 3.74}
-  goalPosition: {x: 0, y: 0, z: 0}
-  minSpeed: 1.75
-  maxSpeed: 5
-  neighbourDistance: 1.74
-  avoidDistance: 1.19
-  rotationSpeed: 3.63
 --- !u!4 &1140017648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4530003306004526970, guid: a281aaaef0214dbbb7a0c5e5d4d370d1, type: 3}
@@ -4051,6 +4028,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1044344974}
   m_SourcePrefab: {fileID: 100100000, guid: 253de96ef55a9f042a87ed61edf3d892, type: 3}
+--- !u!1001 &8125536468788181780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0134296
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.5010605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_Name
+      value: BatFlockManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4073,3 +4107,4 @@ SceneRoots:
   - {fileID: 1769679039}
   - {fileID: 383754219}
   - {fileID: 1696741688}
+  - {fileID: 8125536468788181780}
