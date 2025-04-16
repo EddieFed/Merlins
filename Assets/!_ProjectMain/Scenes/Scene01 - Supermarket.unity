@@ -5087,7 +5087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: maxSpeed
-      value: 3.68
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: minSpeed
@@ -5108,6 +5108,10 @@ PrefabInstance:
     - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: neighbourDistance
       value: 7.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: chaseLimitMultiplier
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_Name
