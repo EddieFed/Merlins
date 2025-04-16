@@ -1983,8 +1983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100, y: 25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 194.11438, y: 25}
+  m_SizeDelta: {x: 388.2288, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431428431
 MonoBehaviour:
@@ -2226,7 +2226,6 @@ GameObject:
   - component: {fileID: 490094127}
   - component: {fileID: 490094126}
   - component: {fileID: 490094125}
-  - component: {fileID: 490094124}
   m_Layer: 0
   m_Name: NPC Manager
   m_TagString: Untagged
@@ -2234,28 +2233,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &490094124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490094123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c578a8d7fc09fa4eaee4066c2ed7086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batPrefab: {fileID: 6646497222628962001, guid: ba6b1c59161b0fd4282fb51c969fc1aa, type: 3}
-  numBats: 14
-  allBats: []
-  flyLimits: {x: 3.28, y: 2.64, z: 3.74}
-  goalPosition: {x: 0, y: 0, z: 0}
-  minSpeed: 1.75
-  maxSpeed: 5
-  neighbourDistance: 1.74
-  avoidDistance: 1.19
-  rotationSpeed: 3.63
 --- !u!114 &490094125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5060,6 +5037,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1740219286
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0134296
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.5010605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: respawnTimer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: maxRespawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_Name
+      value: BatFlockManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
 --- !u!1 &1791647215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2589518600088744281, guid: 5d876a5dc91462a45b1f2d252c031c6f, type: 3}
@@ -6856,6 +6898,7 @@ SceneRoots:
   - {fileID: 886228680}
   - {fileID: 153036244}
   - {fileID: 721824198}
+  - {fileID: 1740219286}
   - {fileID: 1694213289}
   - {fileID: 490094127}
   - {fileID: 906308052}
