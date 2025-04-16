@@ -2000,11 +2000,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1606003712689139490, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2699099795
+      value: 780941722
       objectReference: {fileID: 0}
     - target: {fileID: 1606003712689139490, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1046087661
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003975741278176200, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2348612987399663699, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_Layer
@@ -2050,6 +2054,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3882836939931077688, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1502598792
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011259826577943059, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3262616895
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584922430274589314, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7772752847738079151, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_Name
       value: Player-test
@@ -2057,6 +2073,18 @@ PrefabInstance:
     - target: {fileID: 7772752847738079151, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 211756841
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3203842583
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636095362362169783, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3918132408
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2533,7 +2561,7 @@ Camera:
   far clip plane: 50
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

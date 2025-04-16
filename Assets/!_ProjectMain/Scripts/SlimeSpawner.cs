@@ -9,17 +9,14 @@ public class SlimeSpawner : MonoBehaviour
     public Transform spawnPoint;
     public float maxDelayTime;
     public float currDelayTime;
-    public GameObject shelveGroup;
-    public static List<Transform> shelveLocations;
+    private static List<GameObject> _shelfLocations;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        shelveLocations = new List<Transform>();
-        foreach (Transform child in shelveGroup.transform)
-        {
-            shelveLocations.Add(child);
-        }
+        _shelfLocations = new List<GameObject>();
+        GameObject.FindGameObjectsWithTag("Shelf", _shelfLocations);
+
     }
 
     // Update is called once per frame
@@ -33,8 +30,8 @@ public class SlimeSpawner : MonoBehaviour
         }
     }
     
-    public static Transform GetShelveLocation()
+    public static GameObject GetShelveLocation()
     {
-        return shelveLocations[Random.Range(0, shelveLocations.Count)];
+        return _shelfLocations[Random.Range(0, _shelfLocations.Count)];
     }
 }

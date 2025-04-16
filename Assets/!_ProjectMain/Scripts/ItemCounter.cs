@@ -18,9 +18,9 @@ public class ItemCounter : MonoBehaviour
     {
         stockCountText.text = itemCount + "/" + maxItems;
         
-        if (itemCount == 0)
-            GetComponent<MeshRenderer>().material.color = Color.red;
-        else
-            GetComponent<MeshRenderer>().material.color = Color.green;
+        // if (itemCount == 0)
+        //     GetComponent<MeshRenderer>().material.color = Color.red;
+        // else
+        //     GetComponent<MeshRenderer>().material.color = Color.green;
     }
 }
