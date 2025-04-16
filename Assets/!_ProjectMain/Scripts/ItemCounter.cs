@@ -1,38 +1,45 @@
 using System;
+using __ProjectMain.Scripts;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ItemCounter : MonoBehaviour
 {
-    private const int maxItems = 10;
+    public Color shelfColor;
     public int itemCount;
+    public int maxItems = 10;
+    public int restockAmount = 5;
+    public int minPrice = 5;
+    public int maxPrice = 10;
     private AudioSource _audioSource;
-    [SerializeField] private TextMeshPro stockCountText;
+    [SerializeField] public TextMeshPro stockCountText;
     [SerializeField] private MeshRenderer meshRenderer;
-
-    private void Start()
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player") 
+            && itemCount < maxItems 
+            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.r - shelfColor.r) < 0.1f 
+            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.g - shelfColor.g) < 0.1f 
+            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.b - shelfColor.b) < 0.1f)
+        {
+            other.gameObject.GetComponent<PlayerController>().heldRestock = Color.clear;
+            itemCount = itemCount + restockAmount >= maxItems ? maxItems : itemCount + restockAmount;
+            _audioSource.Play();
+        }
+    }
+    
+    void Start()
     {
         itemCount = Random.Range(1, maxItems);
         _audioSource = GetComponent<AudioSource>();
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player") && itemCount < maxItems)
-        {
-            itemCount++;
-            _audioSource.Play();
-        }
+        meshRenderer.material.color = shelfColor;
     }
 
     private void Update()
     {
         stockCountText.text = itemCount + "/" + maxItems;
-        
-        if (itemCount == 0)
-            meshRenderer.material.color = Color.red;
-        else
-            meshRenderer.material.color = Color.green;
+        stockCountText.color = itemCount == 0 ? Color.red : Color.white;
     }
 }

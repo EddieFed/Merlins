@@ -6,6 +6,8 @@ namespace __ProjectMain.Scripts
 {
     public class PlayerController : NetworkBehaviour
     {
+        // Clear is used as a placeholder, indicating that the player is not holding any item
+        public Color heldRestock = Color.clear;
         private void Update()
         {
             Vector3 movement = new Vector3(0f, 0f, 0f);
