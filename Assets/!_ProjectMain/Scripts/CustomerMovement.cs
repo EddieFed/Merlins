@@ -77,7 +77,7 @@ namespace __ProjectMain.Scripts
                 goal = Goal.FLEE;
                 state = State.MOVING;
                 moveTime = 0;
-                currentDestination = CustomerSpawner.GetEntranceLocation();
+                currentDestination = CustomerSpawner.GetEntranceLocation().transform;
             }
             const float radius = 2f;
             const float sqrRadius = radius * radius;
