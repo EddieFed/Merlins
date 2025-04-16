@@ -40,7 +40,7 @@ public class SlimeBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         audio = GetComponent<AudioSource>();
         currentShelf = SlimeSpawner.GetShelf();
-        currentDestination = SlimeSpawner.GetShelfLocation(currentShelf);
+        currentDestination = currentShelf;
         state = STATE.MOVING;
         goal = GOAL.EAT_STOCK;
     }
