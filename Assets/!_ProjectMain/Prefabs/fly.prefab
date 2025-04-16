@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 466266187646799563}
   - component: {fileID: 4725799358515501346}
   - component: {fileID: 3331040304179177560}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 9130349926548542091}
   - component: {fileID: 6517304034936519302}
   - component: {fileID: 386313426249636073}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7001642439473632816}
   - component: {fileID: -5129557213144150367}
-  m_Layer: 9
+  - component: {fileID: 5689037714855861907}
+  m_Layer: 0
   m_Name: fly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,6 +264,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9da030b34ca9344a81367119f9f00b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchCustomer: 0
+  FM: {fileID: 0}
+--- !u!54 &5689037714855861907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646497222628962001}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7348162776245472404
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +305,7 @@ GameObject:
   - component: {fileID: 1274346385493882180}
   - component: {fileID: 6927915315081556325}
   - component: {fileID: 1707762194303481677}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
