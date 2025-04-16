@@ -3,7 +3,7 @@ using __ProjectMain.Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SlimeAnimate : MonoBehaviour
+public class SlimeBehavior : MonoBehaviour
 {
     public enum STATE
     {
@@ -18,25 +18,29 @@ public class SlimeAnimate : MonoBehaviour
         EAT_STOCK
     }
     
-    public STATE state;
-    public GOAL goal;
+    private STATE state;
+    private GOAL goal;
     
     private Animator anim;
     private NavMeshAgent agent;
-    public Transform currentDestination;
-    private Transform shelveLocation;
-    public float destockCooldown = 5;
-    private float destockTimer = 0;
+    private AudioSource audio;
     
-    public float deathRadius = 2f;
-    public float radius = 2f;
+    public Transform currentDestination;
+    private Transform currentShelf;
+    
+    [SerializeField] private float destockCooldown = 5;
+    [SerializeField] private float destockTimer = 0;
+    [SerializeField] private float deathRadius = 2f;
+    [SerializeField] private float radius = 2f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        currentDestination = SlimeSpawner.GetShelveLocation();
+        audio = GetComponent<AudioSource>();
+        currentShelf = SlimeSpawner.GetShelf();
+        currentDestination = currentShelf;
         state = STATE.MOVING;
         goal = GOAL.EAT_STOCK;
     }
@@ -78,18 +82,20 @@ public class SlimeAnimate : MonoBehaviour
             case STATE.EATING:
                 anim.SetBool("Moving", false);
                 anim.SetBool("Eating", true);
-                if (currentDestination.gameObject.GetComponent<ItemCounter>().itemCount <= 0)
+                if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount <= 0)
                     break;
                 if (destockTimer <= 0)
                 {
                     destockTimer = destockCooldown;
-                    currentDestination.gameObject.GetComponent<ItemCounter>().itemCount--;
+                    currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
+                    audio.Play();
                 }
                 else
                     destockTimer -= Time.deltaTime;
                 break;
             case STATE.DEAD:
                 anim.SetTrigger("Dead");
+                audio.Play();
                 break;
         }
     }

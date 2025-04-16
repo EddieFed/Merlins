@@ -7,17 +7,19 @@ TagManager:
   - Customer
   - Shelf
   - Slime
+  - Register
   - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Water
+  - 
   - Water
   - UI
   - Wall
   - Customer
   - CustomerDoor
+  - Ignore Collide
   - 
   - 
   - 

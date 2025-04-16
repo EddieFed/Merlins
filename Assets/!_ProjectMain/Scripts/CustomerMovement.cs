@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace __ProjectMain.Scripts
 {
@@ -15,6 +16,7 @@ namespace __ProjectMain.Scripts
             EXIT,
             FLEE
         }
+        
         public State state;
         public Goal goal = Goal.PURCHASE;
         public float moveTime;
@@ -23,8 +25,10 @@ namespace __ProjectMain.Scripts
         public float maxWaitTime;
         public float speed;
         public NavMeshAgent agent;
-    
+
+        public int itemValue;
         public Transform currentDestination;
+        public Transform currentShelf;
         public Transform shelveLocation;
         public Transform exitLocation;
 
@@ -59,7 +63,8 @@ namespace __ProjectMain.Scripts
         {
             state = State.MOVING;
             goal = Goal.SHOP;
-            currentDestination = CustomerSpawner.GetShelveLocation();
+            currentShelf = CustomerSpawner.GetShelf();
+            currentDestination = currentShelf;
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -74,8 +79,8 @@ namespace __ProjectMain.Scripts
                 moveTime = 0;
                 currentDestination = CustomerSpawner.GetEntranceLocation();
             }
-            float radius = 2f;
-            float sqrRadius = radius * radius;
+            const float radius = 2f;
+            const float sqrRadius = radius * radius;
             if ((transform.position - currentDestination.position).sqrMagnitude <= sqrRadius)
             {
                 DestinationReached();
@@ -101,6 +106,8 @@ namespace __ProjectMain.Scripts
                     agent.SetDestination(transform.position);
                     waitTime += 1 * Time.deltaTime;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -114,12 +121,18 @@ namespace __ProjectMain.Scripts
             {
                 // Choose next goal (may reroll another of same goal type
                 case Goal.SHOP:
-                    goal = Goal.PURCHASE;
-                    currentDestination = CustomerSpawner.GetRegisterLocation();
+                    if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount > 0)
+                    {
+                        itemValue = Random.Range(currentShelf.gameObject.GetComponent<ItemCounter>().minPrice,
+                            currentShelf.gameObject.GetComponent<ItemCounter>().maxPrice);
+                        currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
+                        goal = Goal.PURCHASE;
+                        currentDestination = CustomerSpawner.GetRegisterLocation().transform;
+                    }
                     break;
                 case Goal.PURCHASE:
                     goal = Goal.EXIT;
-                    currentDestination = CustomerSpawner.GetEntranceLocation();
+                    currentDestination = CustomerSpawner.GetEntranceLocation().transform;
                     break;
                 case Goal.EXIT:
                     Destroy(gameObject);
@@ -127,6 +140,8 @@ namespace __ProjectMain.Scripts
                 case Goal.FLEE:
                     Destroy(gameObject);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
