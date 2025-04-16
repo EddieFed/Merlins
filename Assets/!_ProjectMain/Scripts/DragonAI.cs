@@ -1,50 +1,50 @@
-﻿using Microsoft.ML.Probabilistic.Models;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.ML.Probabilistic.Models;
 using Microsoft.ML.Probabilistic.Distributions;
 using UnityEngine;
 
 namespace __ProjectMain.Scripts
 {
-    class DragonAI
+    public class DragonAI
     {
-        private InferenceEngine engine = new InferenceEngine();
+        private InferenceEngine engine;
 
-        [System.Serializable]
-        public enum Distance
-        {
-            Near = 1,
-            Medium = 2,
-            Far = 3
-        }; // 1: Near, 2: Medium, 3: Far
+        public enum Distance { Near = 1, Medium = 2, Far = 3 };
+        public enum DragonAction { BreatheFire = 0, RunAway = 1, Shop = 2, StandStill = 3 }
 
-        public enum DragonAction
+        private Dictionary<Distance, Discrete> cachedDistributions = new Dictionary<Distance, Discrete>();
+
+        public DragonAI()
         {
-            BreatheFire = 0,
-            RunAway = 1,
-            Shop = 2,
-            StandStill = 3
-        };
-        
-        private Distance currentDistance = Distance.Near;
+            engine = new InferenceEngine();
+            PrecomputeDistributions();
+        }
+
+        private void PrecomputeDistributions()
+        {
+            foreach (Distance d in Enum.GetValues(typeof(Distance)))
+            {
+                Variable<int> distance = Variable.Observed((int)d).Named("distance");
+                Discrete actionProb = d switch
+                {
+                    Distance.Near => new Discrete(new double[] { 0.8, 0.05, 0.1, 0.05 }),
+                    Distance.Medium => new Discrete(new double[] { 0.5, 0.2, 0.2, 0.1 }),
+                    Distance.Far => new Discrete(new double[] { 0.25, 0.25, 0.25, 0.25 }),
+                    _ => new Discrete(new double[] { 0.25, 0.25, 0.25, 0.25 }),
+                };
+
+                Variable<int> action = Variable.New<int>().Named("action");
+                action.SetTo(Variable.Random(actionProb));
+
+                Discrete result = engine.Infer<Discrete>(action);
+                cachedDistributions[d] = result;
+            }
+        }
 
         public DragonAction GetDragonAction(Distance d)
         {
-            currentDistance = d;
-            int distanceObservation = (int)currentDistance;
-            
-            Variable<int> distance = Variable.Observed(distanceObservation).Named("distance");
-            Discrete actionProb = distanceObservation switch
-            {
-                1 => new Discrete(new double[] { 0.8, 0.05, 0.1, 0.05 }), // Near: high chance to BreatheFire
-                2 => new Discrete(new double[] { 0.5, 0.2, 0.2, 0.1 }), // Medium: more balanced
-                3 => new Discrete(new double[] { 0.25, 0.25, 0.25, 0.25 }), // Far: equal chances
-                _ => new Discrete(new double[] { 0.25, 0.25, 0.25, 0.25 }) // Default case (Far)
-            };
-            
-            Variable<int> action = Variable.New<int>().Named("action");
-            action.SetTo(Variable.Random(actionProb));
-            
-            Discrete result = engine.Infer<Discrete>(action);
-            return (DragonAction) result.Sample();
+            return (DragonAction)cachedDistributions[d].Sample();
         }
     }
 }
