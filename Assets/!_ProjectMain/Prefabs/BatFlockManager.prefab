@@ -342,6 +342,7 @@ MonoBehaviour:
   targetCustomer: {fileID: 0}
   respawnTimer: 120
   maxRespawnTime: 90.5
+  audioSource: {fileID: 931059188377965547}
   minSpeed: 0.52
   maxSpeed: 2.72
   neighbourDistance: 5.77

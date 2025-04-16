@@ -4421,6 +4421,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738115014}
     m_Modifications:
+    - target: {fileID: 8525516868525572470, guid: c94d6b997fbfd8c4a8ae9b427112b287, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2589518600088744281, guid: 5d876a5dc91462a45b1f2d252c031c6f, type: 3}
       propertyPath: m_Name
       value: Shelf
@@ -4480,10 +4484,6 @@ PrefabInstance:
     - target: {fileID: 7880260666913185424, guid: 5d876a5dc91462a45b1f2d252c031c6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8525516868525572470, guid: c94d6b997fbfd8c4a8ae9b427112b287, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5047,15 +5047,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0134296
+      value: -11.73
       objectReference: {fileID: 0}
     - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.5010605
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 2455739259283670997, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5086,12 +5086,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: maxSpeed
+      value: 3.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: minSpeed
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: respawnTimer
-      value: 20
+      value: 19.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: rotationSpeed
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: maxRespawnTime
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051594957503789093, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: neighbourDistance
+      value: 7.51
       objectReference: {fileID: 0}
     - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_Name
