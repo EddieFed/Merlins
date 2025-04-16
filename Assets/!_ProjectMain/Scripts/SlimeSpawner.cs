@@ -8,6 +8,8 @@ public class SlimeSpawner : MonoBehaviour
     public GameObject slimePrefab;
     public Transform spawnPoint;
     public float maxDelayTime;
+    public float minDelayTime;
+    public float randomDelay;
     public float currDelayTime;
     public GameObject shelveGroup;
     public static List<Transform> shelveLocations;
@@ -20,21 +22,31 @@ public class SlimeSpawner : MonoBehaviour
         {
             shelveLocations.Add(child);
         }
+        
+        randomDelay = Random.Range(minDelayTime, maxDelayTime);
+        currDelayTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currSlimeCount < slimeLimit)
+        currDelayTime += Time.deltaTime;
+        if (currDelayTime >= randomDelay && currSlimeCount < slimeLimit)
         {
             Instantiate(slimePrefab, spawnPoint.position, spawnPoint.rotation);
             currSlimeCount++;
-            currDelayTime = maxDelayTime;
+            randomDelay = Random.Range(minDelayTime, maxDelayTime);
+            currDelayTime = 0;
         }
     }
     
-    public static Transform GetShelveLocation()
+    public static Transform GetShelf()
     {
         return shelveLocations[Random.Range(0, shelveLocations.Count)];
+    }
+    
+    public static Transform GetShelfLocation(Transform shelf)
+    {
+        return shelf.GetComponent<ItemCounter>().destinations[Random.Range(0, shelf.GetComponent<ItemCounter>().destinations.Count)];
     }
 }

@@ -3,7 +3,7 @@ using __ProjectMain.Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SlimeAnimate : MonoBehaviour
+public class SlimeBehavior : MonoBehaviour
 {
     public enum STATE
     {
@@ -24,7 +24,7 @@ public class SlimeAnimate : MonoBehaviour
     private Animator anim;
     private NavMeshAgent agent;
     public Transform currentDestination;
-    private Transform shelveLocation;
+    private Transform currentShelf;
     public float destockCooldown = 5;
     private float destockTimer = 0;
     
@@ -36,7 +36,8 @@ public class SlimeAnimate : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        currentDestination = SlimeSpawner.GetShelveLocation();
+        currentShelf = SlimeSpawner.GetShelf();
+        currentDestination = SlimeSpawner.GetShelfLocation(currentShelf);
         state = STATE.MOVING;
         goal = GOAL.EAT_STOCK;
     }
@@ -78,12 +79,12 @@ public class SlimeAnimate : MonoBehaviour
             case STATE.EATING:
                 anim.SetBool("Moving", false);
                 anim.SetBool("Eating", true);
-                if (currentDestination.gameObject.GetComponent<ItemCounter>().itemCount <= 0)
+                if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount <= 0)
                     break;
                 if (destockTimer <= 0)
                 {
                     destockTimer = destockCooldown;
-                    currentDestination.gameObject.GetComponent<ItemCounter>().itemCount--;
+                    currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
                 }
                 else
                     destockTimer -= Time.deltaTime;
