@@ -48,9 +48,14 @@ namespace __ProjectMain.Scripts
             currDelayTime -= 1 * Time.deltaTime;
         }
 
-        public static GameObject GetShelveLocation()
+        public static Transform GetShelf()
         {
-            return _shelfLocations[Random.Range(0, _shelfLocations.Count)];
+            return _shelfLocations[Random.Range(0, _shelfLocations.Count)].transform;
+        }
+        
+        public static Transform GetShelfLocation(Transform shelf)
+        {
+            return shelf.GetComponent<ItemCounter>().destinations[Random.Range(0, shelf.GetComponent<ItemCounter>().destinations.Count)];
         }
     
         public static GameObject GetEntranceLocation()

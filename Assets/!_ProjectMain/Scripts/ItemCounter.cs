@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using __ProjectMain.Scripts;
 using TMPro;
 using UnityEngine;
@@ -13,8 +14,12 @@ public class ItemCounter : MonoBehaviour
     public int minPrice = 5;
     public int maxPrice = 10;
     private AudioSource _audioSource;
+    
     [SerializeField] public TextMeshPro stockCountText;
     [SerializeField] private MeshRenderer meshRenderer;
+    
+    public GameObject targetGroup;
+    public List<Transform> destinations;
     
     private void OnCollisionEnter(Collision other)
     {
@@ -32,9 +37,14 @@ public class ItemCounter : MonoBehaviour
     
     void Start()
     {
+        meshRenderer.material.color = shelfColor;
         itemCount = Random.Range(1, maxItems);
         _audioSource = GetComponent<AudioSource>();
-        meshRenderer.material.color = shelfColor;
+        destinations = new List<Transform>();
+        foreach (Transform child in targetGroup.transform)
+        {
+            destinations.Add(child);
+        }
     }
 
     private void Update()
