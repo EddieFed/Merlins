@@ -25,6 +25,12 @@ namespace __ProjectMain.Scripts
         [SerializeField] private Button clientBtn;
         [SerializeField] private TMP_Text joinCodeText;
         [SerializeField] private TMP_InputField joinCodeInputField;
+        [SerializeField] private Canvas howToPlayCanvas;
+        [SerializeField] private Button howToPlayBtn;
+        [SerializeField] private Button htpBackBtn;
+        [SerializeField] private Canvas creditsCanvas;
+        [SerializeField] private Button creditsBtn;
+        [SerializeField] private Button cBackBtn;
 
         // Lobby references
         [SerializeField] private Canvas readyCanvas;
@@ -39,6 +45,8 @@ namespace __ProjectMain.Scripts
             joinCodeText.text = string.Empty; // There is a placeholder for UI building, we MUST wipe it!
             menuCanvas.enabled = true;
             readyCanvas.enabled = false;
+            howToPlayCanvas.enabled = false;
+            creditsCanvas.enabled = false;
             
             hostBtn.onClick.AddListener(StartHostRelay);
             clientBtn.onClick.AddListener(StartClientRelay);
@@ -62,6 +70,30 @@ namespace __ProjectMain.Scripts
                         PlayerUnReadyServerRpc();
                     }
                 }
+            });
+            
+            howToPlayBtn.onClick.AddListener(() =>
+            {
+                menuCanvas.enabled = false;
+                howToPlayCanvas.enabled = true;
+            });
+            
+            htpBackBtn.onClick.AddListener(() =>
+            {
+                menuCanvas.enabled = true;
+                howToPlayCanvas.enabled = false;
+            });
+            
+            creditsBtn.onClick.AddListener(() =>
+            {
+                menuCanvas.enabled = false;
+                creditsCanvas.enabled = true;
+            });
+            
+            cBackBtn.onClick.AddListener(() =>
+            {
+                menuCanvas.enabled = true;
+                creditsCanvas.enabled = false;
             });
         }
 
