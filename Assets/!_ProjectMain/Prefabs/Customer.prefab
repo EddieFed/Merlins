@@ -85,7 +85,9 @@ MonoBehaviour:
   maxWaitTime: 3.71
   speed: 4.47
   agent: {fileID: 0}
+  itemValue: 0
   currentDestination: {fileID: 0}
+  currentShelf: {fileID: 0}
   shelveLocation: {fileID: 0}
   exitLocation: {fileID: 0}
   maxIFrame: 10

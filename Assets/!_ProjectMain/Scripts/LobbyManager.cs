@@ -117,6 +117,15 @@ namespace __ProjectMain.Scripts
             {
                 Debug.LogException(e);
             }
+            
+            // TODO: Bypass multiplayer, fix this later
+            string targetScene = "Scene01 - Supermarket";
+            SceneEventProgressStatus status = NetworkManager.SceneManager.LoadScene(targetScene, LoadSceneMode.Single);
+            if (status != SceneEventProgressStatus.Started)
+            {
+                Debug.LogWarning($"Failed to load {targetScene} with a {nameof(SceneEventProgressStatus)}: {status}");
+                Debug.LogWarning($"LOL?? {SceneManager.GetSceneByBuildIndex(1).name}");
+            }
         }
 
         private async void StartClientRelay()
@@ -167,7 +176,7 @@ namespace __ProjectMain.Scripts
             if (_currentPlayersReady == MaxPlayers || _currentPlayersReady == _currPlayersLobby)
             {
                 string targetScene = "Scene01 - Supermarket";
-                SceneEventProgressStatus status = NetworkManager.SceneManager.LoadScene(targetScene, LoadSceneMode.Additive);
+                SceneEventProgressStatus status = NetworkManager.SceneManager.LoadScene(targetScene, LoadSceneMode.Single);
                 if (status != SceneEventProgressStatus.Started)
                 {
                     Debug.LogWarning($"Failed to load {targetScene} with a {nameof(SceneEventProgressStatus)}: {status}");
