@@ -36,13 +36,16 @@ public class GameManager : MonoBehaviour
         totalSatisfaction = 0;
         bankValue = 0;
         currTime = 0;
+        
+        // TODO: Make this part of the ready button
+        state = STATE.OPEN;
     }
 
     void Update()
     {
         bankText.text = "Bank: $" + bankValue;
         customerText.text = "Customers: " + NPCManager.GetComponent<CustomerSpawner>().currCustomerCount + " (" + totalCustomers + " total)";
-        satisfactionText.text = "Satisfaction: " + (totalCustomers == 0 ? 0 : totalSatisfaction / (totalCustomers * 100)) + "%";
+        satisfactionText.text = "Satisfaction: " + (totalCustomers == 0 ? 100 : totalSatisfaction / (totalCustomers * 100)) + "%";
         
         if (currTime >= gameTime)
         {

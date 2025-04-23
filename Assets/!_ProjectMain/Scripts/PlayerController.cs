@@ -13,7 +13,7 @@ namespace __ProjectMain.Scripts
         // Clear is used as a placeholder, indicating that the player is not holding any item
         public Color heldRestock = Color.clear;
         [SerializeField] public GameObject heldItemGameObject;
-        public TextMeshProUGUI heldRestockText;
+        // public TextMeshProUGUI heldRestockText;
 
         [SerializeField] public GameObject heldBroomGameObject;
         
@@ -117,13 +117,13 @@ namespace __ProjectMain.Scripts
             rb.linearVelocity = movement;
             playerTransform.LookAt(transform.position + movement);
             
-            if (heldRestock == Color.clear)
-                heldRestockText.text = null;
-            else
-            {
-                heldRestockText.text = "Held Item";
-                heldRestockText.color = heldRestock;
-            }
+            // if (heldRestock == Color.clear)
+            //     heldRestockText.text = null;
+            // else
+            // {
+            //     heldRestockText.text = "Held Item";
+            //     heldRestockText.color = heldRestock;
+            // }
         }
     }
 }

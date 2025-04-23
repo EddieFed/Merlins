@@ -42,6 +42,7 @@ namespace __ProjectMain.Scripts
         {
             if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Puddle"))
             {
+                GameManager.totalSatisfaction += satisfaction;
                 if (currIFrame <= 0)
                 {
                     currIFrame = maxIFrame;
@@ -80,10 +81,11 @@ namespace __ProjectMain.Scripts
                 moveTime = 0;
                 currentDestination = CustomerSpawner.GetEntranceLocation().transform;
             }
-            const float radius = 2f;
+            const float radius = 5.0f;
             const float sqrRadius = radius * radius;
             if ((transform.position - currentDestination.position).sqrMagnitude <= sqrRadius)
             {
+                Debug.Log($"Customer {gameObject.name} reached his destination!");
                 DestinationReached();
             }
         
@@ -137,7 +139,6 @@ namespace __ProjectMain.Scripts
                     break;
                 case Goal.EXIT:
                 case Goal.FLEE:
-                    GameManager.totalSatisfaction += satisfaction;
                     Destroy(gameObject);
                     break;
                 default:
