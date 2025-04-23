@@ -34,24 +34,24 @@ namespace __ProjectMain.Scripts
 
         public float maxIFrame = 10f;
         public float currIFrame = 0;
-        public float health = 100f;
+        public int satisfaction = 100;
         
         public bool isDead = false;
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Puddle"))
             {
                 if (currIFrame <= 0)
                 {
                     currIFrame = maxIFrame;
-                    health -= 10;
+                    satisfaction -= 10;
                 }
 
-                if (health <= 0 && !isDead)
+                if (satisfaction <= 0 && !isDead)
                 {
                     isDead = true;
-                    health = 0;
+                    satisfaction = 0;
                     speed = speed * 4;
                 }
                 
@@ -72,7 +72,7 @@ namespace __ProjectMain.Scripts
         protected void Update()
         {
             currIFrame -= 1;
-            if (health <= 0 && goal != Goal.FLEE)
+            if (satisfaction <= 0 && goal != Goal.FLEE)
             {
                 goal = Goal.FLEE;
                 state = State.MOVING;
@@ -136,9 +136,8 @@ namespace __ProjectMain.Scripts
                     currentDestination = CustomerSpawner.GetEntranceLocation().transform;
                     break;
                 case Goal.EXIT:
-                    Destroy(gameObject);
-                    break;
                 case Goal.FLEE:
+                    GameManager.totalSatisfaction += satisfaction;
                     Destroy(gameObject);
                     break;
                 default:
