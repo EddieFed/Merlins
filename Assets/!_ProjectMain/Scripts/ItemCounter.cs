@@ -38,6 +38,15 @@ public class ItemCounter : MonoBehaviour
     
     void Start()
     {
+        // Since we are not oriented to the player, flip the text on init
+        if (transform.localRotation.eulerAngles.y != 0)
+        {
+            stockCountText.transform.localRotation = Quaternion.Euler(
+                stockCountText.transform.localRotation.eulerAngles.x, 
+                180 + stockCountText.transform.localRotation.eulerAngles.y,
+                stockCountText.transform.localRotation.eulerAngles.z
+                );
+        }
         
         stockColors = new List<Color>
         {
@@ -57,5 +66,14 @@ public class ItemCounter : MonoBehaviour
     {
         stockCountText.text = itemCount + "/" + maxItems;
         stockCountText.color = itemCount == 0 ? Color.red : Color.white;
+    }
+
+    public void FlipTextPerspective()
+    {
+        stockCountText.transform.localRotation = Quaternion.Euler(
+            stockCountText.transform.localRotation.eulerAngles.x,
+            (180 + stockCountText.transform.localRotation.eulerAngles.y) % 360,
+            stockCountText.transform.localRotation.eulerAngles.z
+        );
     }
 }

@@ -48,6 +48,12 @@ namespace __ProjectMain.Scripts
                     ((isInvertedPerspective) ? -1 : 1) * 180 + Camera.main.transform.localRotation.eulerAngles.y,
                     Camera.main.transform.localRotation.eulerAngles.z
                 );
+                
+                // Shelf text adjustments
+                foreach (GameObject shelf in GameObject.FindGameObjectsWithTag("Shelf"))
+                {
+                    shelf.GetComponent<ItemCounter>().FlipTextPerspective();
+                }
             }
             
             Vector3 movement = new Vector3(0f, 0f, 0f);
@@ -68,6 +74,7 @@ namespace __ProjectMain.Scripts
                 movement += new Vector3(10f, 0f, -10f);
             }
 
+            // Adjust movement
             if (isInvertedPerspective)
             {
                 movement *= -1f;
