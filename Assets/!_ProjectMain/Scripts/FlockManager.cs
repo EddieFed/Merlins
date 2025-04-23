@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FlockManager : MonoBehaviour
 {
+    public float initialSpawnDelay = 0;
     public GameObject batPrefab;
     public int numBats = 20;
     public GameObject[] allBats;
@@ -20,6 +21,7 @@ public class FlockManager : MonoBehaviour
     public float maxRespawnTime = 120f;
     
     public AudioSource audioSource;
+    private bool firstSpawn = false;
 
     [Header("Bat Settings")] [Range(0.0f, 5.0f)]
     public float minSpeed = 1.0f;
@@ -79,6 +81,16 @@ public class FlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (firstSpawn && initialSpawnDelay <=0)
+        {
+            firstSpawn = false;
+            SpawnBats();
+        }
+
+        if (initialSpawnDelay > -1)
+        {
+            initialSpawnDelay -= Time.deltaTime;
+        }
         if (isDead)
         {
             respawnTimer -= Time.deltaTime;
