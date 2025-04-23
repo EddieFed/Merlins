@@ -47,13 +47,8 @@ public class ItemCounter : MonoBehaviour
                 stockCountText.transform.localRotation.eulerAngles.z
                 );
         }
-        
-        stockColors = new List<Color>
-        {
-            Color.blue,
-            Color.magenta,
-            Color.yellow
-        };
+
+        stockColors = Restock.AllColors;
         shelfColor = stockColors[Random.Range(0, stockColors.Count)];
         meshRenderer.material.color = shelfColor;
         itemCount = Random.Range(1, maxItems);
@@ -65,7 +60,7 @@ public class ItemCounter : MonoBehaviour
     private void Update()
     {
         stockCountText.text = itemCount + "/" + maxItems;
-        stockCountText.color = itemCount == 0 ? Color.red : Color.white;
+        stockCountText.color = itemCount == 0 ? new Color32(0xC0, 0x16, 0x16, 0xFF) : new Color32(221, 221, 221, 255);
     }
 
     public void FlipTextPerspective()
