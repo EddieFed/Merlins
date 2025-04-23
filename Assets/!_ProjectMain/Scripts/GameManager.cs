@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
     {
         bankText.text = "Bank: $" + bankValue;
         customerText.text = "Customers: " + NPCManager.GetComponent<CustomerSpawner>().currCustomerCount + " (" + totalCustomers + " total)";
-        satisfactionText.text = "Satisfaction: " + (totalCustomers == 0 ? 100 : totalSatisfaction / (totalCustomers * 100)) + "%";
+        // satisfactionText.text = "Satisfaction: " + (totalCustomers == 0 ? 100 : totalSatisfaction / (totalCustomers * 100)) + "%";
+        satisfactionText.text = "";
         
         if (currTime >= gameTime)
         {
