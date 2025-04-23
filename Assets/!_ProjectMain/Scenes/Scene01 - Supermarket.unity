@@ -2211,8 +2211,13 @@ MonoBehaviour:
   currDelayTime: 0
   customerPrefab: {fileID: 5034421607884198006, guid: ccbab969cf013314aa7e49ca5c1a8dec, type: 3}
   dragonPrefab: {fileID: 2053109683602006598, guid: 1a88a752a1fc03f4dbbc31f74e7ea138, type: 3}
+  customers: []
+  messPrefab: {fileID: 5849854066312010164, guid: 0d68a0e2177e1ae44b023da5c81b078f, type: 3}
+  messTargetFilter: 30
   entrance: {fileID: 999056858}
   spawnPoint: {fileID: 249139241}
+  messDelayMax: 20
+  messDelayCurrent: 0
 --- !u!4 &490094127
 Transform:
   m_ObjectHideFlags: 0
