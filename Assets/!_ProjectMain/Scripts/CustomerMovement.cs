@@ -16,6 +16,8 @@ namespace __ProjectMain.Scripts
             EXIT,
             FLEE
         }
+
+        public float timeAlive = 0;
         
         public State state;
         public Goal goal = Goal.PURCHASE;
@@ -62,6 +64,7 @@ namespace __ProjectMain.Scripts
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
+            timeAlive = 0f;
             state = State.MOVING;
             goal = Goal.SHOP;
             currentShelf = CustomerSpawner.GetShelf();
@@ -72,6 +75,7 @@ namespace __ProjectMain.Scripts
         // Update is called once per frame
         protected void Update()
         {
+            timeAlive += Time.deltaTime;
             currIFrame -= 1;
             if (satisfaction <= 0 && goal != Goal.FLEE)
             {

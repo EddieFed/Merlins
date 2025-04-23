@@ -12,12 +12,19 @@ namespace __ProjectMain.Scripts
         public float currDelayTime;
         public GameObject customerPrefab;
         public GameObject dragonPrefab;
+        public List<GameObject> customers = new List<GameObject>();
+        
+        public GameObject messPrefab;
+        public float messTargetFilter;
         
         public GameObject entrance;
         public Transform spawnPoint;
         private static List<GameObject> _shelfLocations;
         private static List<GameObject> _entranceLocations;
         private static List<GameObject> _registerLocations;
+
+        public float messDelayMax;
+        public float messDelayCurrent;
 
         private void Start()
         {
@@ -43,9 +50,39 @@ namespace __ProjectMain.Scripts
                     currCustomerCount++;
                     GameManager.totalCustomers++;
                     currDelayTime = maxDelayTime;
+                    customers.Add(customer);
                 }
             }
 
+            // Create mess on random customer
+            if (messDelayCurrent <= 0)
+            {
+                int tries = 7;
+                while (tries > 0)
+                {
+                    GameObject messTarget = customers[Random.Range(0, customers.Count)];
+                    if (!messTarget)
+                    {
+                        tries--;
+                        continue;
+                    }
+
+                    if (messTarget.GetComponent<CustomerMovement>().timeAlive < messTargetFilter)
+                    {
+                        tries--;
+                        continue;
+                    }
+                    Transform messLocation = messTarget.transform;
+                    messLocation.transform.position = new Vector3(messTarget.transform.position.x, 0f, messTarget.transform.position.z);
+
+                    Instantiate(messPrefab, messLocation.position, messLocation.rotation);
+                    messDelayCurrent = messDelayMax;
+                    break;
+
+                }
+                
+            }
+            messDelayCurrent -= Time.deltaTime;
             currDelayTime -= 1 * Time.deltaTime;
         }
 
