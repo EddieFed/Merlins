@@ -12,12 +12,14 @@ namespace __ProjectMain.Scripts
         
         // Clear is used as a placeholder, indicating that the player is not holding any item
         public Color heldRestock = Color.clear;
+        [SerializeField] public GameObject heldItemGameObject;
         public TextMeshProUGUI heldRestockText;
 
         private bool isInvertedPerspective = false;
 
         private void Start()
         {
+            heldItemGameObject.GetComponent<Renderer>().enabled = false;
             if (playerTransform == null)
             {
                 Debug.LogError("Player transform is null, assign it to Wizard dude prefab!!!!");
@@ -27,6 +29,17 @@ namespace __ProjectMain.Scripts
         
         private void Update()
         {
+            // Keep stock held updated
+            if (heldRestock != Color.clear)
+            {
+                heldItemGameObject.GetComponent<Renderer>().enabled = true;
+                heldItemGameObject.GetComponent<Renderer>().material.color = heldRestock;
+            }
+            else
+            {
+                heldItemGameObject.GetComponent<Renderer>().enabled = false;
+            }
+
             // Flip camera
             if (Input.GetKeyDown(KeyCode.Tab))
             {
