@@ -13,13 +13,13 @@ public class SlimeBehavior : MonoBehaviour
         DEAD
     }
 
-    public enum GOAL
-    {
-        EAT_STOCK
-    }
+    // public enum GOAL
+    // {
+    //     EAT_STOCK
+    // }
     
     private STATE state;
-    private GOAL goal;
+    // private GOAL goal;
     
     private Animator anim;
     private NavMeshAgent agent;
@@ -42,7 +42,6 @@ public class SlimeBehavior : MonoBehaviour
         currentShelf = SlimeSpawner.GetShelf();
         currentDestination = currentShelf;
         state = STATE.MOVING;
-        goal = GOAL.EAT_STOCK;
     }
 
     // Update is called once per frame
