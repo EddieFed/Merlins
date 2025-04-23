@@ -14,6 +14,8 @@ namespace __ProjectMain.Scripts
         public Color heldRestock = Color.clear;
         public TextMeshProUGUI heldRestockText;
 
+        private bool isInvertedPerspective = false;
+
         private void Start()
         {
             if (playerTransform == null)
@@ -25,6 +27,29 @@ namespace __ProjectMain.Scripts
         
         private void Update()
         {
+            // Flip camera
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                isInvertedPerspective = !isInvertedPerspective;
+
+                if (!Camera.main)
+                {
+                    Debug.LogWarning("Camera not found");
+                    return;
+                }
+
+                Camera.main.transform.localPosition = new Vector3(
+                    -1 * Camera.main.transform.localPosition.x,
+                    Camera.main.transform.localPosition.y,
+                    -1 * Camera.main.transform.localPosition.z
+                );
+                Camera.main.transform.localRotation = Quaternion.Euler(
+                    Camera.main.transform.localRotation.eulerAngles.x,
+                    ((isInvertedPerspective) ? -1 : 1) * 180 + Camera.main.transform.localRotation.eulerAngles.y,
+                    Camera.main.transform.localRotation.eulerAngles.z
+                );
+            }
+            
             Vector3 movement = new Vector3(0f, 0f, 0f);
             if (Input.GetKey(KeyCode.W))
             {
@@ -42,6 +67,12 @@ namespace __ProjectMain.Scripts
             {
                 movement += new Vector3(10f, 0f, -10f);
             }
+
+            if (isInvertedPerspective)
+            {
+                movement *= -1f;
+            }
+            
             rb.linearVelocity = movement;
             playerTransform.LookAt(transform.position + movement);
             
