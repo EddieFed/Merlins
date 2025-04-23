@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ce7316171b193a546a90f613ac2ccd47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,10 +178,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2208aee91baabad4694b9e2fd1072b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shelfColor: {r: 0, g: 0, b: 0, a: 0}
   itemCount: 10
   maxItems: 10
+  restockAmount: 5
+  minPrice: 5
+  maxPrice: 10
   stockCountText: {fileID: 4776189538396197867}
   meshRenderer: {fileID: 4282639192672716055}
+  targetGroup: {fileID: 0}
+  destinations: []
 --- !u!82 &4578234930068854530
 AudioSource:
   m_ObjectHideFlags: 0

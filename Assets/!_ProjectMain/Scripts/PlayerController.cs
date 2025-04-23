@@ -22,6 +22,12 @@ namespace __ProjectMain.Scripts
 
         private void Start()
         {
+            // TODO: Despawn if multiplayer prefab, remove later
+            if (gameObject.name == "Player(Clone)")
+            {
+                Destroy(gameObject);
+            }
+            
             heldBroomGameObject.GetComponent<MeshRenderer>().enabled = false;
             heldItemGameObject.GetComponent<MeshRenderer>().enabled = false;
             if (playerTransform == null)

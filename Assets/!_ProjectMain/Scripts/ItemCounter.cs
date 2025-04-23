@@ -50,7 +50,7 @@ public class ItemCounter : MonoBehaviour
 
         stockColors = Restock.AllColors;
         shelfColor = stockColors[Random.Range(0, stockColors.Count)];
-        meshRenderer.material.color = shelfColor;
+        meshRenderer.material.SetColor("_Base_Color", shelfColor);
         itemCount = Random.Range(1, maxItems);
         _audioSource = GetComponent<AudioSource>();
         destinations = new List<Transform>();
