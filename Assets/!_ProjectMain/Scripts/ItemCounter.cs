@@ -38,13 +38,17 @@ public class ItemCounter : MonoBehaviour
     
     void Start()
     {
-        
-        stockColors = new List<Color>
+        // Since we are not oriented to the player, flip the text on init
+        if (transform.localRotation.eulerAngles.y != 0)
         {
-            Color.blue,
-            Color.magenta,
-            Color.yellow
-        };
+            stockCountText.transform.localRotation = Quaternion.Euler(
+                stockCountText.transform.localRotation.eulerAngles.x, 
+                180 + stockCountText.transform.localRotation.eulerAngles.y,
+                stockCountText.transform.localRotation.eulerAngles.z
+                );
+        }
+
+        stockColors = Restock.AllColors;
         shelfColor = stockColors[Random.Range(0, stockColors.Count)];
         meshRenderer.material.color = shelfColor;
         itemCount = Random.Range(1, maxItems);
@@ -56,6 +60,15 @@ public class ItemCounter : MonoBehaviour
     private void Update()
     {
         stockCountText.text = itemCount + "/" + maxItems;
-        stockCountText.color = itemCount == 0 ? Color.red : Color.white;
+        stockCountText.color = itemCount == 0 ? new Color32(0xC0, 0x16, 0x16, 0xFF) : new Color32(221, 221, 221, 255);
+    }
+
+    public void FlipTextPerspective()
+    {
+        stockCountText.transform.localRotation = Quaternion.Euler(
+            stockCountText.transform.localRotation.eulerAngles.x,
+            (180 + stockCountText.transform.localRotation.eulerAngles.y) % 360,
+            stockCountText.transform.localRotation.eulerAngles.z
+        );
     }
 }
