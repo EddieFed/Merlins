@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8817858207914845111}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,8 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _playerTransform: {fileID: 2003975741278176200}
+  playerTransform: {fileID: 0}
   heldRestock: {r: 0, g: 0, b: 0, a: 0}
+  heldRestockText: {fileID: 0}
 --- !u!1001 &2037091773458654243
 PrefabInstance:
   m_ObjectHideFlags: 0
