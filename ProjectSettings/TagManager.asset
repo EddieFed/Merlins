@@ -9,6 +9,7 @@ TagManager:
   - Slime
   - Register
   - Enemy
+  - Puddle
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,6 @@ TagManager:
   - Customer
   - CustomerDoor
   - Ignore Collide
-  - 
   - 
   - 
   - 
