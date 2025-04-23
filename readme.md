@@ -17,6 +17,8 @@ Unity Asset Store:
 - [Shelves01 Pack](https://assetstore.unity.com/packages/3d/props/shelves01-pack-289927)
 - [Fresh shelving](https://assetstore.unity.com/packages/3d/props/furniture/fresh-shelving-267101)
 - [RPG Monster Duo PBR Polyart](https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762)
+Other:
+- [Puddle](https://skfb.ly/oO6TW)
 
 ## Music/Sound FX
 Unity Asset Store:
