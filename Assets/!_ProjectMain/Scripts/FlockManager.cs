@@ -8,8 +8,12 @@ public class FlockManager : MonoBehaviour
     public GameObject[] allBats;
     public int currentCount;
     public float deathLimit = .5f;
-    public Vector3 flyLimits = new Vector3(5, 5, 5); // L W H container 
-    public Vector3 baseFlyLimits = new Vector3(5, 5, 5); // L W H container 
+    public GameObject baseBoundObject;
+    public Bounds baseBounds;
+    public Bounds patrolBounds;
+    public Bounds chaseBounds;
+    public Bounds currentBounds;
+    
     public float patrolLimitMultiplier = 1.5f;
     public float chaseLimitMultiplier = 3f;
     public Vector3 goalPosition = Vector3.zero;
@@ -21,7 +25,7 @@ public class FlockManager : MonoBehaviour
     public float maxRespawnTime = 120f;
     
     public AudioSource audioSource;
-    private bool firstSpawn = false;
+    private bool firstSpawn = true;
 
     [Header("Bat Settings")] [Range(0.0f, 5.0f)]
     public float minSpeed = 1.0f;
@@ -36,16 +40,13 @@ public class FlockManager : MonoBehaviour
     public void SetTargetCustomer(GameObject target)
     {
         if (targetCustomer) return;
-        Bounds chaseBounds = new Bounds(transform.position, baseFlyLimits * chaseLimitMultiplier);
+        
         if (chaseBounds.Contains(target.transform.position))
         {
             print("new customer hit");
             targetCustomer = target;
-            flyLimits = new Vector3(
-                baseFlyLimits.x * chaseLimitMultiplier,
-                baseFlyLimits.y,
-                baseFlyLimits.z * chaseLimitMultiplier
-            );
+
+            currentBounds = chaseBounds;
         }
     }
 
@@ -57,6 +58,13 @@ public class FlockManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        firstSpawn = true;
+        baseBounds = new Bounds(baseBoundObject.transform.position, baseBoundObject.transform.localScale);
+        Vector3 scaledSize = baseBoundObject.transform.localScale * patrolLimitMultiplier;
+        patrolBounds = new Bounds(baseBoundObject.transform.position, scaledSize);
+        scaledSize = baseBoundObject.transform.localScale * chaseLimitMultiplier;
+        chaseBounds = new Bounds(baseBoundObject.transform.position, scaledSize);
+        currentBounds = patrolBounds;
         SpawnBats();
     }
 
@@ -66,9 +74,9 @@ public class FlockManager : MonoBehaviour
         for (int i = 0; i < numBats; i++)
         {
             Vector3 pos = transform.position + new Vector3(
-                Random.Range(-baseFlyLimits.x, baseFlyLimits.x),
-                Random.Range(-baseFlyLimits.y, baseFlyLimits.y),
-                Random.Range(-baseFlyLimits.z, baseFlyLimits.z)
+                Random.Range(baseBounds.min.x, baseBounds.max.x),
+                Random.Range(baseBounds.min.y, baseBounds.max.y),
+                Random.Range(baseBounds.min.z, baseBounds.max.z)
             );
             allBats[i] = Instantiate(batPrefab, pos, Quaternion.identity);
             allBats[i].GetComponent<Flock>().FM = this;
@@ -113,12 +121,6 @@ public class FlockManager : MonoBehaviour
                 Destroy(bat);
             }
         }
-        Bounds chaseBounds = new Bounds(transform.position, flyLimits = new Vector3(
-            baseFlyLimits.x * chaseLimitMultiplier,
-            baseFlyLimits.y,
-            baseFlyLimits.z * chaseLimitMultiplier
-        ));
-
 
         //Change set the goal direction
         if (targetCustomer)
@@ -134,15 +136,10 @@ public class FlockManager : MonoBehaviour
         }
         else if (Random.Range(0, 100) < 5)
         {
-            flyLimits = new Vector3(
-                baseFlyLimits.x * patrolLimitMultiplier,
-                baseFlyLimits.y,
-                baseFlyLimits.z * patrolLimitMultiplier
-            );
             goalPosition = transform.position + new Vector3(
-                Random.Range(-flyLimits.x, flyLimits.x),
-                Random.Range(-flyLimits.y, flyLimits.y),
-                Random.Range(-flyLimits.z, flyLimits.z));
+                Random.Range(patrolBounds.min.x, patrolBounds.max.x),
+                Random.Range(patrolBounds.min.y, patrolBounds.max.y),
+                Random.Range(patrolBounds.min.z, patrolBounds.max.z));
         }
 
         goalTransform.localPosition = goalPosition;

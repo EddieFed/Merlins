@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfColor: {r: 0.05490196, g: 0.68235296, b: 0.3254902, a: 0}
+  shelfNum: 0
 --- !u!65 &7648099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1905,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2053415924
+      value: 3907280807
       objectReference: {fileID: 0}
     - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -2806,6 +2807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfColor: {r: 0.4, g: 0.3019608, b: 0.6, a: 0}
+  shelfNum: 0
 --- !u!65 &724106935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3348,6 +3350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfColor: {r: 0.7137255, g: 0.5294118, b: 0.09019608, a: 0}
+  shelfNum: 0
 --- !u!65 &986825565
 BoxCollider:
   m_ObjectHideFlags: 0

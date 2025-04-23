@@ -33,7 +33,7 @@ public class Flock : MonoBehaviour
     void Update()
     {
         // Turn Flock inwards when leaving bounds
-        Bounds bounds = new Bounds(FM.transform.position, FM.flyLimits);
+        Bounds bounds = FM.currentBounds;
         if (!bounds.Contains(transform.position))
         {
             turning = true;
