@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
       propertyPath: m_TagString
-      value: Slime
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
       propertyPath: m_LocalScale.x

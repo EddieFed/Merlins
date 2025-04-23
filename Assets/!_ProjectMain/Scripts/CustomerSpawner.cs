@@ -41,6 +41,7 @@ namespace __ProjectMain.Scripts
                     GameObject customer = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
                     customer.tag = "Customer";
                     currCustomerCount++;
+                    GameManager.totalCustomers++;
                     currDelayTime = maxDelayTime;
                 }
             }
