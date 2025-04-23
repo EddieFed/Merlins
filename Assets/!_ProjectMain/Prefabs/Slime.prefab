@@ -17,6 +17,18 @@ PrefabInstance:
       value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: 6520c6d7889f4c72b416f07f34edd515, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.53
       objectReference: {fileID: 0}
@@ -95,10 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb1f8b0d32c35e4aa72b9863bb2b469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  goal: 0
   currentDestination: {fileID: 0}
   destockCooldown: 5
+  destockTimer: 0
   deathRadius: 2
   radius: 2
 --- !u!195 &169999827249667399
