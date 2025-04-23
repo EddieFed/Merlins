@@ -15,11 +15,15 @@ namespace __ProjectMain.Scripts
         [SerializeField] public GameObject heldItemGameObject;
         public TextMeshProUGUI heldRestockText;
 
+        [SerializeField] public GameObject heldBroomGameObject;
+        
         private bool isInvertedPerspective = false;
+        public bool isHoldingBroom = false;
 
         private void Start()
         {
-            heldItemGameObject.GetComponent<Renderer>().enabled = false;
+            heldBroomGameObject.GetComponent<MeshRenderer>().enabled = false;
+            heldItemGameObject.GetComponent<MeshRenderer>().enabled = false;
             if (playerTransform == null)
             {
                 Debug.LogError("Player transform is null, assign it to Wizard dude prefab!!!!");
@@ -29,16 +33,27 @@ namespace __ProjectMain.Scripts
         
         private void Update()
         {
+            // Use broom, clears item
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                heldRestock = Color.clear;   
+                isHoldingBroom = !isHoldingBroom;
+            }
+            
             // Keep stock held updated
             if (heldRestock != Color.clear)
             {
-                heldItemGameObject.GetComponent<Renderer>().enabled = true;
-                heldItemGameObject.GetComponent<Renderer>().material.color = heldRestock;
+                heldItemGameObject.GetComponent<MeshRenderer>().enabled = true;
+                heldItemGameObject.GetComponent<MeshRenderer>().material.color = heldRestock;
+                isHoldingBroom = false;
             }
             else
             {
-                heldItemGameObject.GetComponent<Renderer>().enabled = false;
+                heldItemGameObject.GetComponent<MeshRenderer>().enabled = false;
             }
+
+            // Show broom?
+            heldBroomGameObject.GetComponent<MeshRenderer>().enabled = isHoldingBroom;
 
             // Flip camera
             if (Input.GetKeyDown(KeyCode.Tab))

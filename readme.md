@@ -19,6 +19,7 @@ Unity Asset Store:
 - [RPG Monster Duo PBR Polyart](https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762)
 Other:
 - [Puddle](https://skfb.ly/oO6TW)
+- [Broom](https://skfb.ly/oIJKw)
 
 ## Music/Sound FX
 Unity Asset Store:
