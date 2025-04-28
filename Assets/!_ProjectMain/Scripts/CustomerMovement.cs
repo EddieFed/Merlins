@@ -128,11 +128,12 @@ namespace __ProjectMain.Scripts
             {
                 // Choose next goal (may reroll another of same goal type
                 case Goal.SHOP:
-                    if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount > 0)
+                    ItemCounter itemCounter = currentShelf.gameObject.GetComponentInChildren<ItemCounter>();
+                    if (itemCounter.itemCount > 0)
                     {
-                        itemValue = Random.Range(currentShelf.gameObject.GetComponent<ItemCounter>().minPrice,
-                            currentShelf.gameObject.GetComponent<ItemCounter>().maxPrice);
-                        currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
+                        itemValue = Random.Range(itemCounter.minPrice,
+                            itemCounter.maxPrice);
+                        itemCounter.itemCount--;
                         goal = Goal.PURCHASE;
                         currentDestination = CustomerSpawner.GetRegisterLocation().transform;
                     }

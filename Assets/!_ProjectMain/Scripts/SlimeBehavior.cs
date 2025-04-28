@@ -81,12 +81,12 @@ public class SlimeBehavior : MonoBehaviour
             case STATE.EATING:
                 anim.SetBool("Moving", false);
                 anim.SetBool("Eating", true);
-                if (currentShelf.gameObject.GetComponent<ItemCounter>().itemCount <= 0)
+                if (currentShelf.gameObject.GetComponentInChildren<ItemCounter>().itemCount <= 0)
                     break;
                 if (destockTimer <= 0)
                 {
                     destockTimer = destockCooldown;
-                    currentShelf.gameObject.GetComponent<ItemCounter>().itemCount--;
+                    currentShelf.gameObject.GetComponentInChildren<ItemCounter>().itemCount--;
                     audio.Play();
                 }
                 else
