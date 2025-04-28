@@ -11,7 +11,8 @@ public class InteractBox : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Interactable"))
         {
-            // Debug.Log("Interactable enter");
+            Debug.Log("Interactable enter");
+            Debug.Log(other.gameObject.name);
             interactionController.InteractEnter(other);
         }
     }
@@ -20,7 +21,7 @@ public class InteractBox : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Interactable"))
         {
-            // Debug.Log("Interactable exit");
+            Debug.Log("Interactable exit");
             interactionController.InteractExit(other);
         }
     }
