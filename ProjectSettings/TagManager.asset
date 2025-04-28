@@ -10,6 +10,7 @@ TagManager:
   - Register
   - Enemy
   - Puddle
+  - Interactable
   layers:
   - Default
   - TransparentFX

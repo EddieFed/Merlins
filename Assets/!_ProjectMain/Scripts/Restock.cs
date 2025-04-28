@@ -41,11 +41,16 @@ public class Restock : MonoBehaviour
 
     public static readonly List<Color> AllColors = new() {Color1, Color2, Color3, Color4, Color5};
 
-    private void OnCollisionEnter(Collision other)
+    public void RestockPlayer(GameObject controller)
     {
-        if (other.gameObject.CompareTag("Player"))
-            other.gameObject.GetComponent<PlayerController>().heldRestock = shelfColor;
+        controller.GetComponent<PlayerController>().heldRestock = shelfColor;
     }
+
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //         other.gameObject.GetComponent<PlayerController>().heldRestock = shelfColor;
+    // }
     
     void Start()
     {
