@@ -7,7 +7,7 @@ namespace __ProjectMain.Scripts
     {
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collision Enter");
+            // Debug.Log("Collision Enter");
             if (other.gameObject.CompareTag("Player"))
             {
                 PlayerController player = other.gameObject.GetComponent<PlayerController>();

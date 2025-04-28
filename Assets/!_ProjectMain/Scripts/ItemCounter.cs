@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ItemCounter : MonoBehaviour
+public class ItemCounter : MonoBehaviour, IInteractable
 {
     private List<Color> stockColors;
     public Color shelfColor;
@@ -21,20 +21,28 @@ public class ItemCounter : MonoBehaviour
     
     public GameObject targetGroup;
     public List<Transform> destinations;
-    
-    private void OnCollisionEnter(Collision other)
+
+    public void AcceptRestock(PlayerController player)
     {
-        if (other.gameObject.CompareTag("Player") 
-            && itemCount < maxItems 
-            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.r - shelfColor.r) < 0.1f 
-            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.g - shelfColor.g) < 0.1f 
-            && Mathf.Abs(other.gameObject.GetComponent<PlayerController>().heldRestock.b - shelfColor.b) < 0.1f)
+        
+        if (itemCount < maxItems 
+            && Mathf.Abs(player.heldRestock.r - shelfColor.r) < 0.1f 
+            && Mathf.Abs(player.heldRestock.g - shelfColor.g) < 0.1f 
+            && Mathf.Abs(player.heldRestock.b - shelfColor.b) < 0.1f)
         {
-            other.gameObject.GetComponent<PlayerController>().heldRestock = Color.clear;
+            player.heldRestock = Color.clear;
             itemCount = itemCount + restockAmount >= maxItems ? maxItems : itemCount + restockAmount;
             _audioSource.Play();
         }
     }
+    
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         AcceptRestock(other.gameObject.GetComponent<PlayerController>());
+    //     }
+    // }
     
     void Start()
     {
@@ -70,5 +78,12 @@ public class ItemCounter : MonoBehaviour
             (180 + stockCountText.transform.localRotation.eulerAngles.y) % 360,
             stockCountText.transform.localRotation.eulerAngles.z
         );
+    }
+
+    public void Interact(GameObject controller)
+    {
+        Debug.Log("Item Interact");
+        PlayerController playerController = controller.GetComponent<PlayerController>();
+        AcceptRestock(playerController);
     }
 }
