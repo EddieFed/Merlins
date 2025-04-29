@@ -13,7 +13,7 @@ namespace __ProjectMain.Scripts.Obstacle
             if (other.gameObject.CompareTag("Player"))
             {
                 PlayerController player = other.gameObject.GetComponent<PlayerController>();
-                if (player.isHoldingBroom && Input.GetKeyDown(Interactable.InteractionController.InteractKey))
+                if (player.isHoldingBroom && Input.GetKey(Interactable.InteractionController.InteractKey))
                 {
                     GameObject indicator = GetComponent<Indicator>().indicatorInstance;
                     if (indicator != null)
