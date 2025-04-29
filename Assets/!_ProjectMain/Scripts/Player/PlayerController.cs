@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace __ProjectMain.Scripts.Player
 {
-    public class PlayerController : NetworkBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private Rigidbody rb;
         [SerializeField] private Transform playerTransform;
@@ -21,12 +21,6 @@ namespace __ProjectMain.Scripts.Player
 
         private void Start()
         {
-            // TODO: Despawn if multiplayer prefab, remove later
-            if (gameObject.name == "Player(Clone)")
-            {
-                Destroy(gameObject);
-            }
-            
             heldBroomGameObject.GetComponent<MeshRenderer>().enabled = false;
             heldItemGameObject.GetComponent<MeshRenderer>().enabled = false;
             if (playerTransform == null)
@@ -38,6 +32,7 @@ namespace __ProjectMain.Scripts.Player
         
         private void Update()
         {
+            
             // Use broom, clears item
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -116,13 +111,6 @@ namespace __ProjectMain.Scripts.Player
             rb.linearVelocity = movement;
             playerTransform.LookAt(transform.position + movement);
             
-            // if (heldRestock == Color.clear)
-            //     heldRestockText.text = null;
-            // else
-            // {
-            //     heldRestockText.text = "Held Item";
-            //     heldRestockText.color = heldRestock;
-            // }
         }
     }
 }

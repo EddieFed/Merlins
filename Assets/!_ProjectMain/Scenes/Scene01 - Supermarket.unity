@@ -723,7 +723,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: dbf491c12349d3646b162642ceddfb5c, type: 2}
   m_BuildHeightMesh: 0
@@ -1874,7 +1874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2638941067126037411, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.9
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2638941067126037411, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1882,7 +1882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2638941067126037411, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.7
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2638941067126037411, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1979,6 +1979,14 @@ PrefabInstance:
     - target: {fileID: 7772752847738079151, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772752847738079151, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7967644737489180843, guid: 33eaf358a9eb37542997eb7cad4cae11, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -3689,8 +3697,8 @@ Transform:
   m_GameObject: {fileID: 1132079025}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.468, y: 0.5, z: 3.75}
-  m_LocalScale: {x: 6, y: 1, z: 0.5}
+  m_LocalPosition: {x: 4.168, y: 0.5, z: 3.75}
+  m_LocalScale: {x: 4.5998645, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1962682827}
@@ -5386,7 +5394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1694213287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5558,6 +5566,10 @@ PrefabInstance:
     - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
       propertyPath: m_Name
       value: BatFlockManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869097016433354033, guid: a998adaae288e5c4ba00eeacc3f31b51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
