@@ -15,10 +15,6 @@ namespace __ProjectMain.Scripts.Game
 {
     public class LobbyManager : MonoBehaviour
     {
-        private const int MaxPlayers = 4;
-        private int _currPlayersLobby = 0;
-        private int _currentPlayersReady = 0;
-
         // Menu references
         [SerializeField] private Canvas menuCanvas;
         [SerializeField] private Button hostBtn;

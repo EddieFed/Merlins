@@ -109,7 +109,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.2716573}
-  m_Center: {x: 0, y: 0, z: 0.13582854}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1413358410476362397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   maxPrice: 10
   stockCountText: {fileID: 4776189538396197867}
   meshRenderer: {fileID: 4282639192672716055}
+  indicatorPrefab: {fileID: 0}
   targetGroup: {fileID: 0}
   destinations: []
 --- !u!82 &3799439660103678401
@@ -240,6 +241,7 @@ GameObject:
   - component: {fileID: 7880260666913185424}
   - component: {fileID: 6423720123786078625}
   - component: {fileID: 4482540656128233469}
+  - component: {fileID: 8344300329685519821}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Shelf
@@ -284,8 +286,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.65, y: 1, z: 0.29340434}
-  m_Center: {x: 0, y: 0.5, z: 0.021702245}
+  m_Size: {x: 1.65, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &4482540656128233469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +308,23 @@ MonoBehaviour:
   maxPrice: 10
   stockCountText: {fileID: 4776189538396197867}
   meshRenderer: {fileID: 4282639192672716055}
+  indicatorPrefab: {fileID: 0}
   targetGroup: {fileID: 0}
   destinations: []
+--- !u!114 &8344300329685519821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589518600088744281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5bad7a5f93478f9fc19365fca182ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorPrefab: {fileID: 8120528199261965879, guid: 8121534e858fae442bedf96f47c4ae00, type: 3}
+  indicatorInstance: {fileID: 0}
 --- !u!1 &3587684822865219312
 GameObject:
   m_ObjectHideFlags: 0
