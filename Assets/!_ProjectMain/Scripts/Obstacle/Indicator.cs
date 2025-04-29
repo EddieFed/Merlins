@@ -15,7 +15,7 @@ namespace __ProjectMain.Scripts.Obstacle
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                indicatorInstance = Instantiate(indicatorPrefab, this.transform.position + (Vector3.up * 5), Quaternion.Euler(new Vector3(90, 0, 0)));
+                indicatorInstance = Instantiate(indicatorPrefab, this.transform.position + (Vector3.up * 6), Quaternion.Euler(new Vector3(90, 0, 0)));
             }
         }
         

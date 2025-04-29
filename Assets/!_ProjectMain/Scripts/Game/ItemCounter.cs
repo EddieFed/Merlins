@@ -1,13 +1,11 @@
 using System.Collections.Generic;
-using __ProjectMain.Scripts.Interactable;
-using __ProjectMain.Scripts.Player;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace __ProjectMain.Scripts.Game
 {
-    public class ItemCounter : MonoBehaviour, IInteractable
+    public class ItemCounter : MonoBehaviour
     {
         private List<Color> stockColors;
         public Color shelfColor;
@@ -20,14 +18,11 @@ namespace __ProjectMain.Scripts.Game
     
         [SerializeField] public TextMeshPro stockCountText;
         [SerializeField] private MeshRenderer meshRenderer;
-    
-        [SerializeField] private GameObject indicatorPrefab;
-        private GameObject indicatorInstance;
         
         public GameObject targetGroup;
         public List<Transform> destinations;
 
-        public void AcceptRestock(PlayerController player)
+        public void AcceptRestock(Player.PlayerController player)
         {
         
             if (itemCount < maxItems 
@@ -41,13 +36,13 @@ namespace __ProjectMain.Scripts.Game
             }
         }
     
-        // private void OnCollisionEnter(Collision other)
-        // {
-        //     if (other.gameObject.CompareTag("Player"))
-        //     {
-        //         AcceptRestock(other.gameObject.GetComponent<PlayerController>());
-        //     }
-        // }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player") && Input.GetKey(Interactable.InteractionController.InteractKey))
+            {
+                AcceptRestock(other.gameObject.GetComponent<Player.PlayerController>());
+            }
+        }
     
         void Start()
         {
@@ -83,18 +78,6 @@ namespace __ProjectMain.Scripts.Game
                 (180 + stockCountText.transform.localRotation.eulerAngles.y) % 360,
                 stockCountText.transform.localRotation.eulerAngles.z
             );
-        }
-
-        public void Interact(GameObject controller)
-        {
-            Debug.Log("Item Interact");
-            PlayerController playerController = controller.GetComponent<PlayerController>();
-            AcceptRestock(playerController);
-        }
-
-        public void OnTriggerEnter(Collider collider)
-        {
-            
         }
     }
 }
