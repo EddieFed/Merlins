@@ -15,7 +15,7 @@ namespace __ProjectMain.Scripts.Dragon
         
         float timePassed = 0f;
 
-        private void Start()
+        protected new void Start()
         {
             state = State.MOVING;
             goal = Goal.SHOP;
@@ -24,8 +24,8 @@ namespace __ProjectMain.Scripts.Dragon
             animator = GetComponent<Animator>();
             timePassed = 50f;
         }
-        
-        private void Update()
+
+        protected new void Update()
         {
             timePassed += Time.deltaTime;
             if (timePassed > 50f)

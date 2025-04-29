@@ -40,6 +40,8 @@ namespace __ProjectMain.Scripts.Customer
         public int satisfaction = 100;
         
         public bool isDead = false;
+        
+        public MeshRenderer meshRenderer;
 
         private void OnCollisionEnter(Collision other)
         {
@@ -71,6 +73,7 @@ namespace __ProjectMain.Scripts.Customer
             currentShelf = CustomerSpawner.GetShelf();
             currentDestination = currentShelf;
             agent = GetComponent<NavMeshAgent>();
+            meshRenderer.material.SetColor("_Base_Color", currentShelf.GetComponent<ItemCounter>().shelfColor);
         }
 
         // Update is called once per frame
@@ -117,6 +120,11 @@ namespace __ProjectMain.Scripts.Customer
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
+            Vector3 lookAtMe = currentDestination.transform.position;
+            lookAtMe.y += transform.position.y;
+            transform.LookAt(lookAtMe);
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0); // Adjust for model BS
         }
 
         protected void DestinationReached()
@@ -130,6 +138,8 @@ namespace __ProjectMain.Scripts.Customer
                 // Choose next goal (may reroll another of same goal type
                 case Goal.SHOP:
                     ItemCounter itemCounter = currentShelf.gameObject.GetComponentInChildren<ItemCounter>();
+                    meshRenderer.material.SetColor("_Base_Color", itemCounter.shelfColor);
+
                     if (itemCounter.itemCount > 0)
                     {
                         itemValue = Random.Range(itemCounter.minPrice,
@@ -137,6 +147,7 @@ namespace __ProjectMain.Scripts.Customer
                         itemCounter.itemCount--;
                         goal = Goal.PURCHASE;
                         currentDestination = CustomerSpawner.GetRegisterLocation().transform;
+                        meshRenderer.material.SetColor("_Base_Color", Color.clear);
                     }
                     break;
                 case Goal.PURCHASE:

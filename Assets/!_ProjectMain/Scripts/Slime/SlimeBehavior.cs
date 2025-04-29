@@ -24,7 +24,7 @@ namespace __ProjectMain.Scripts.Slime
     
         private Animator anim;
         private NavMeshAgent agent;
-        private AudioSource audio;
+        private AudioSource audioSource;
     
         public Transform currentDestination;
         private Transform currentShelf;
@@ -39,7 +39,7 @@ namespace __ProjectMain.Scripts.Slime
         {
             anim = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
-            audio = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
             currentShelf = SlimeSpawner.GetShelf();
             currentDestination = currentShelf;
             state = STATE.MOVING;
@@ -88,14 +88,14 @@ namespace __ProjectMain.Scripts.Slime
                     {
                         destockTimer = destockCooldown;
                         currentShelf.gameObject.GetComponentInChildren<ItemCounter>().itemCount--;
-                        audio.Play();
+                        audioSource.Play();
                     }
                     else
                         destockTimer -= Time.deltaTime;
                     break;
                 case STATE.DEAD:
                     anim.SetTrigger("Dead");
-                    audio.Play();
+                    audioSource.Play();
                     break;
             }
         }
