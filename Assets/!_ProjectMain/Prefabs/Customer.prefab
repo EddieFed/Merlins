@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5344059135757858526}
   - component: {fileID: -3234159737170513830}
   - component: {fileID: 5215235929619392434}
-  - component: {fileID: 6612248407506815989}
   - component: {fileID: 3443665881863884038}
   - component: {fileID: 3020832935005420650}
   - component: {fileID: -2052537644939802174}
@@ -77,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff372bcc53a61844bffcd740b95abe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAlive: 0
   state: 0
   goal: 1
   moveTime: 0
@@ -92,21 +92,8 @@ MonoBehaviour:
   exitLocation: {fileID: 0}
   maxIFrame: 10
   currIFrame: 0
-  health: 100
+  satisfaction: 100
   isDead: 0
---- !u!114 &6612248407506815989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034421607884198006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ff052ce49f91841ba5f64f18904f6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 19.2
 --- !u!195 &3443665881863884038
 NavMeshAgent:
   m_ObjectHideFlags: 0

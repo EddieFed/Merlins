@@ -1,4 +1,6 @@
 using __ProjectMain.Scripts;
+using __ProjectMain.Scripts.Game;
+using __ProjectMain.Scripts.Interactable;
 using UnityEngine;
 
 public class RestockShelf : MonoBehaviour, IInteractable
