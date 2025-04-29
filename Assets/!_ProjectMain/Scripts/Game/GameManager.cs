@@ -19,6 +19,9 @@ namespace __ProjectMain.Scripts.Game
         public GameObject NPCManager;
         public int gameTime;
         public float currTime;
+        private int currTimeStage;
+        private int currHour;
+        private int currMin;
         public TextMeshProUGUI clockText;
         public TextMeshProUGUI bankText;
         public TextMeshProUGUI customerText;
@@ -61,7 +64,10 @@ namespace __ProjectMain.Scripts.Game
                     NPCManager.GetComponent<CustomerSpawner>().enabled = true;
                     NPCManager.GetComponent<SlimeSpawner>().enabled = true;
                     currTime += Time.deltaTime;
-                    clockText.text = Mathf.RoundToInt(currTime) + "/" + gameTime;
+                    currTimeStage = Mathf.FloorToInt(currTime / ((float)gameTime / 48));
+                    currHour = (currTimeStage / 6) + 9;
+                    currMin = (currTimeStage % 6) * 10;
+                    clockText.text = (currHour > 12 ? currHour - 12 : currHour) + ":" + (currMin < 10 ? "0" + currMin : currMin) + (currHour >= 12 ? " PM" : " AM");
                     break;
                 case STATE.CLOSED:
                     clockText.text = "CLOSED";
