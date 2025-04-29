@@ -5,7 +5,7 @@ namespace __ProjectMain.Scripts.Interactable
 {
     public class InteractionController : MonoBehaviour
     {
-        public KeyCode interactKey = KeyCode.E;
+        public const KeyCode InteractKey = KeyCode.E;
         [SerializeField] public List<IInteractable> interactables = new List<IInteractable>();
 
         private void InteractCurrent()
@@ -14,7 +14,7 @@ namespace __ProjectMain.Scripts.Interactable
         }
         void Update()
         {
-            if (Input.GetKeyDown(interactKey)) // Example: press E to interact
+            if (Input.GetKeyDown(InteractKey)) // Example: press E to interact
             {
                 Debug.Log("Interact");
                 if (interactables.Count > 0)

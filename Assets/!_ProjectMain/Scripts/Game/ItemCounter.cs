@@ -21,6 +21,9 @@ namespace __ProjectMain.Scripts.Game
         [SerializeField] public TextMeshPro stockCountText;
         [SerializeField] private MeshRenderer meshRenderer;
     
+        [SerializeField] private GameObject indicatorPrefab;
+        private GameObject indicatorInstance;
+        
         public GameObject targetGroup;
         public List<Transform> destinations;
 
@@ -87,6 +90,11 @@ namespace __ProjectMain.Scripts.Game
             Debug.Log("Item Interact");
             PlayerController playerController = controller.GetComponent<PlayerController>();
             AcceptRestock(playerController);
+        }
+
+        public void OnTriggerEnter(Collider collider)
+        {
+            
         }
     }
 }

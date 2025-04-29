@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 7848508660296064312}
   - component: {fileID: 2682363080158222931}
   - component: {fileID: 1982616500661738615}
+  - component: {fileID: 7972367607175175279}
   m_Layer: 0
   m_Name: Mess
   m_TagString: Untagged
@@ -703,6 +704,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f7240c960b446aab0c9fa660b25bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7972367607175175279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849854066312010164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5bad7a5f93478f9fc19365fca182ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorPrefab: {fileID: 8120528199261965879, guid: 8121534e858fae442bedf96f47c4ae00, type: 3}
+  indicatorInstance: {fileID: 0}
 --- !u!1 &7831672148317648537
 GameObject:
   m_ObjectHideFlags: 0
