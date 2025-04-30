@@ -8,7 +8,7 @@ namespace __ProjectMain.Scripts.Customer
     public class CustomerSpawner : MonoBehaviour
     {
         public int customerLimit;
-        public int currCustomerCount;
+        public static int currCustomerCount;
         public float maxDelayTime;
         public float currDelayTime;
         public GameObject customerPrefab;
@@ -63,7 +63,11 @@ namespace __ProjectMain.Scripts.Customer
                 int tries = 7;
                 while (tries > 0)
                 {
-                    GameObject messTarget = customers[Random.Range(0, customers.Count)];
+                    GameObject messTarget = null;
+                    if (customers.Count > 0)
+                    {
+                        messTarget = customers[Random.Range(0, customers.Count)];
+                    }
                     if (!messTarget)
                     {
                         tries--;

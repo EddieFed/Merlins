@@ -3,6 +3,8 @@ using __ProjectMain.Scripts.Customer;
 using __ProjectMain.Scripts.Slime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace __ProjectMain.Scripts.Game
 {
@@ -15,6 +17,11 @@ namespace __ProjectMain.Scripts.Game
             CLOSED, // No more customers will spawn, existing customers will finish their orders
             COMPLETED // All customers have left
         }
+        
+        // Menu references
+        [SerializeField] private GameObject endMenu;
+        [SerializeField] private Button playAgainBtn;
+        [SerializeField] private Button mainMenuBtn;
     
         public STATE state;
         public GameObject NPCManager;
@@ -23,6 +30,7 @@ namespace __ProjectMain.Scripts.Game
         private int currTimeStage;
         private int currHour;
         private int currMin;
+        public static int bankValue;
         public TextMeshProUGUI clockText;
         public TextMeshProUGUI bankText;
         public TextMeshProUGUI customerText;
@@ -30,13 +38,23 @@ namespace __ProjectMain.Scripts.Game
 
         public static float ConfirmedSatisfaction = 0.0f;
         public static int ConfirmedCustomers = 0;
-        public static float ConfirmedPurchase = 0;
 
         void Start()
         {
             state = STATE.SETUP;
             NPCManager.GetComponent<CustomerSpawner>().enabled = false;
             NPCManager.GetComponent<SlimeSpawner>().enabled = false;
+            endMenu.SetActive(false);
+            playAgainBtn.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("Scene01 - Supermarket");
+            });
+            mainMenuBtn.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("Scene00 - Main Menu");
+            });
+
+            bankValue = 0;
             currTime = 0;
         
             // TODO: Make this part of the ready button
@@ -45,11 +63,9 @@ namespace __ProjectMain.Scripts.Game
 
         void Update()
         {
-            CustomerSpawner customerSpawner = NPCManager.GetComponent<CustomerSpawner>();
-            customerText.text = $"Customers: {customerSpawner.currCustomerCount} ( {customerSpawner.customerLimit} total)";
+            customerText.text = $"Customers: {CustomerSpawner.currCustomerCount} ({CustomerSpawner.currCustomerCount + ConfirmedCustomers} total)";
             
-            float bankValue = 0;
-            float maxSatisfaction = 100.0f * (customerSpawner.currCustomerCount);
+            float maxSatisfaction = 100.0f * (CustomerSpawner.currCustomerCount + ConfirmedCustomers);
             float totalSatisfaction = ConfirmedSatisfaction;
             foreach (GameObject customer in GameObject.FindGameObjectsWithTag("Customer"))
             {
@@ -57,7 +73,7 @@ namespace __ProjectMain.Scripts.Game
                 totalSatisfaction += customerMovement.satisfaction;
                 bankValue += customerMovement.currentSpent;
             }
-            bankText.text = $"Bank: ${ConfirmedPurchase}";
+            bankText.text = $"Bank: ${bankValue}";
             satisfactionText.text = $"Satisfaction: {(int) ((totalSatisfaction / maxSatisfaction) * 100)}%";
             
             if (currTime >= gameTime)
@@ -71,15 +87,16 @@ namespace __ProjectMain.Scripts.Game
                     NPCManager.GetComponent<CustomerSpawner>().enabled = true;
                     NPCManager.GetComponent<SlimeSpawner>().enabled = true;
                     currTime += Time.deltaTime;
-                    currTimeStage = Mathf.FloorToInt(currTime / ((float)gameTime / 48));
-                    currHour = (currTimeStage / 6) + 9;
-                    currMin = (currTimeStage % 6) * 10;
+                    currTimeStage = Mathf.FloorToInt(currTime / ((float)gameTime / 480));
+                    currHour = (currTimeStage / 60) + 9;
+                    currMin = (currTimeStage % 60);
                     clockText.text = (currHour > 12 ? currHour - 12 : currHour) + ":" + (currMin < 10 ? "0" + currMin : currMin) + (currHour >= 12 ? " PM" : " AM");
                     break;
                 case STATE.CLOSED:
                     clockText.text = "CLOSED";
                     NPCManager.GetComponent<CustomerSpawner>().enabled = false;
                     NPCManager.GetComponent<SlimeSpawner>().enabled = false;
+                    endMenu.SetActive(true);
                     break;
                 case STATE.COMPLETED:
                     // Round over logic here
