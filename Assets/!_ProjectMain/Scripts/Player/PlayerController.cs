@@ -43,9 +43,9 @@ namespace __ProjectMain.Scripts.Player
             {
                 rotation = transform.rotation;
                 slipTime = maxSlipTime;
-                rb.linearVelocity = Vector3.zero;
-                rb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
-                rb.AddTorque(new Vector3(0, slipForce, 0), ForceMode.Impulse);
+                // rb.linearVelocity = Vector3.zero;
+                // rb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
+                // rb.AddTorque(new Vector3(0, slipForce, 0), ForceMode.Impulse);
             }
         }
         
@@ -55,6 +55,7 @@ namespace __ProjectMain.Scripts.Player
             slipTime -= Time.deltaTime;
             if (slipTime >= 2f)
             {
+                playerTransform.RotateAround(playerTransform.position, Vector3.up, 500.0f * Time.deltaTime);
                 return;
             }
 
