@@ -30,6 +30,8 @@ namespace __ProjectMain.Scripts.Customer
         public NavMeshAgent agent;
 
         public int itemValue;
+        public int currentSpent = 0;
+        
         public Transform currentDestination;
         public Transform currentShelf;
         public Transform shelveLocation;
@@ -47,7 +49,6 @@ namespace __ProjectMain.Scripts.Customer
         {
             if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Puddle"))
             {
-                GameManager.totalSatisfaction += satisfaction;
                 if (currIFrame <= 0)
                 {
                     currIFrame = maxIFrame;
@@ -87,7 +88,7 @@ namespace __ProjectMain.Scripts.Customer
                 state = State.MOVING;
                 maxMoveTime = 999;
                 moveTime = 0;
-                currentDestination = CustomerSpawner.GetEntranceLocation().transform;
+                currentDestination = CustomerSpawner.GetExitLocation().transform;
             }
             const float radius = 5.0f;
             const float sqrRadius = radius * radius;
@@ -152,10 +153,12 @@ namespace __ProjectMain.Scripts.Customer
                     break;
                 case Goal.PURCHASE:
                     goal = Goal.EXIT;
-                    currentDestination = CustomerSpawner.GetEntranceLocation().transform;
+                    currentDestination = CustomerSpawner.GetExitLocation().transform;
                     break;
                 case Goal.EXIT:
                 case Goal.FLEE:
+                    GameManager.ConfirmedCustomers++;
+                    GameManager.ConfirmedSatisfaction += satisfaction;
                     Destroy(gameObject);
                     break;
                 default:

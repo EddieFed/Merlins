@@ -1,3 +1,4 @@
+using System;
 using __ProjectMain.Scripts.Customer;
 using __ProjectMain.Scripts.Slime;
 using TMPro;
@@ -27,19 +28,15 @@ namespace __ProjectMain.Scripts.Game
         public TextMeshProUGUI customerText;
         public TextMeshProUGUI satisfactionText;
 
-        public static int totalCustomers;
-        public static int totalSatisfaction;
-        public static int bankValue;
+        public static float ConfirmedSatisfaction = 0.0f;
+        public static int ConfirmedCustomers = 0;
+        public static float ConfirmedPurchase = 0;
 
         void Start()
         {
             state = STATE.SETUP;
             NPCManager.GetComponent<CustomerSpawner>().enabled = false;
             NPCManager.GetComponent<SlimeSpawner>().enabled = false;
-
-            totalCustomers = 0;
-            totalSatisfaction = 0;
-            bankValue = 0;
             currTime = 0;
         
             // TODO: Make this part of the ready button
@@ -48,11 +45,21 @@ namespace __ProjectMain.Scripts.Game
 
         void Update()
         {
-            bankText.text = "Bank: $" + bankValue;
-            customerText.text = "Customers: " + NPCManager.GetComponent<CustomerSpawner>().currCustomerCount + " (" + totalCustomers + " total)";
-            // satisfactionText.text = "Satisfaction: " + (totalCustomers == 0 ? 100 : totalSatisfaction / (totalCustomers * 100)) + "%";
-            satisfactionText.text = "";
-        
+            CustomerSpawner customerSpawner = NPCManager.GetComponent<CustomerSpawner>();
+            customerText.text = $"Customers: {customerSpawner.currCustomerCount} ( {customerSpawner.customerLimit} total)";
+            
+            float bankValue = 0;
+            float maxSatisfaction = 100.0f * (customerSpawner.currCustomerCount);
+            float totalSatisfaction = ConfirmedSatisfaction;
+            foreach (GameObject customer in GameObject.FindGameObjectsWithTag("Customer"))
+            {
+                CustomerMovement customerMovement = customer.GetComponent<CustomerMovement>();
+                totalSatisfaction += customerMovement.satisfaction;
+                bankValue += customerMovement.currentSpent;
+            }
+            bankText.text = $"Bank: ${ConfirmedPurchase}";
+            satisfactionText.text = $"Satisfaction: {(int) ((totalSatisfaction / maxSatisfaction) * 100)}%";
+            
             if (currTime >= gameTime)
             {
                 state = STATE.CLOSED;
