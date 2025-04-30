@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f7240c960b446aab0c9fa660b25bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slipDelayMax: 1
-  slipDelay: 1
+  slipDelayMax: 0.5
+  slipDelay: 0.5
 --- !u!114 &8633411993801524394
 MonoBehaviour:
   m_ObjectHideFlags: 0
