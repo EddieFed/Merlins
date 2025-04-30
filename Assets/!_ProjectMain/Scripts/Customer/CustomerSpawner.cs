@@ -19,9 +19,11 @@ namespace __ProjectMain.Scripts.Customer
         public float messTargetFilter;
         
         public GameObject entrance;
+        public GameObject exit;
         public Transform spawnPoint;
         private static List<GameObject> _shelfLocations;
         private static List<GameObject> _entranceLocations;
+        private static List<GameObject> _exitLocations;
         private static List<GameObject> _registerLocations;
 
         public float messDelayMax;
@@ -33,6 +35,7 @@ namespace __ProjectMain.Scripts.Customer
             GameObject.FindGameObjectsWithTag("Shelf", _shelfLocations);
         
             _entranceLocations = new List<GameObject> { entrance };
+            _exitLocations = new List<GameObject> { exit };
 
             _registerLocations = new List<GameObject>();
             GameObject.FindGameObjectsWithTag("Register", _registerLocations);
@@ -49,7 +52,6 @@ namespace __ProjectMain.Scripts.Customer
                     GameObject customer = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
                     customer.tag = "Customer";
                     currCustomerCount++;
-                    GameManager.totalCustomers++;
                     currDelayTime = maxDelayTime;
                     customers.Add(customer);
                 }
@@ -101,6 +103,12 @@ namespace __ProjectMain.Scripts.Customer
         {
             return _entranceLocations[Random.Range(0, _entranceLocations.Count)];
         }
+        
+        public static GameObject GetExitLocation()
+        {
+            return _exitLocations[Random.Range(0, _exitLocations.Count)];
+        }
+        
         public static GameObject GetRegisterLocation()
         {
             return _registerLocations[Random.Range(0, _registerLocations.Count)];
