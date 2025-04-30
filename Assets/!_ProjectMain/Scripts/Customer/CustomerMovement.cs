@@ -152,6 +152,7 @@ namespace __ProjectMain.Scripts.Customer
                     }
                     break;
                 case Goal.PURCHASE:
+                    GameManager.bankValue += itemValue;
                     goal = Goal.EXIT;
                     currentDestination = CustomerSpawner.GetExitLocation().transform;
                     break;
@@ -160,6 +161,7 @@ namespace __ProjectMain.Scripts.Customer
                     GameManager.ConfirmedCustomers++;
                     GameManager.ConfirmedSatisfaction += satisfaction;
                     Destroy(gameObject);
+                    CustomerSpawner.currCustomerCount--;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
