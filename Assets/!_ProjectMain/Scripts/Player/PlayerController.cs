@@ -43,6 +43,7 @@ namespace __ProjectMain.Scripts.Player
             {
                 rotation = transform.rotation;
                 slipTime = maxSlipTime;
+                rb.linearVelocity = Vector3.zero;
                 rb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
                 rb.AddTorque(new Vector3(0, slipForce, 0), ForceMode.Impulse);
             }
@@ -136,6 +137,13 @@ namespace __ProjectMain.Scripts.Player
             {
                 movement += new Vector3(10f, 0f, -10f);
             }
+            
+            // Normalize movement to keep speed consistent
+            if (movement != Vector3.zero)
+            {
+                movement = movement.normalized * 10f; // 10f is the final speed you want
+            }
+
 
             // Adjust movement
             if (isInvertedPerspective)
