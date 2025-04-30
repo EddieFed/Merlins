@@ -65,6 +65,10 @@ PrefabInstance:
       value: Puddle
       objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 665b369383b45d14cb9df39f40d1dab6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 665b369383b45d14cb9df39f40d1dab6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 571e01bbd42ae404b9ef9b4360c60d95, type: 2}
@@ -122,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f7240c960b446aab0c9fa660b25bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slipDelayMax: 1
+  slipDelay: 1
 --- !u!114 &8633411993801524394
 MonoBehaviour:
   m_ObjectHideFlags: 0
