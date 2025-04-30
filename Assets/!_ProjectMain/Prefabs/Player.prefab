@@ -338,6 +338,9 @@ MonoBehaviour:
   heldRestock: {r: 0, g: 0, b: 0, a: 0}
   heldItemGameObject: {fileID: 8886738983152780084}
   heldBroomGameObject: {fileID: 8516901158740911740}
+  maxSlipTime: 5
+  slipTime: 0
+  slipForce: 70
   isHoldingBroom: 0
 --- !u!114 &3161916940457510542
 MonoBehaviour:
@@ -371,9 +374,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.8333333
-  m_Height: 1.7
+  m_Height: 2.12
   m_Direction: 1
-  m_Center: {x: -0.23, y: 0.09, z: -0.05}
+  m_Center: {x: -0.23000002, y: 0.089999996, z: -0.050000034}
 --- !u!1 &8886738983152780084
 GameObject:
   m_ObjectHideFlags: 0
