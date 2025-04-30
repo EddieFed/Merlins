@@ -16,8 +16,14 @@ namespace __ProjectMain.Scripts.Player
 
         [SerializeField] public GameObject heldBroomGameObject;
         
+        [SerializeField] public float maxSlipTime = 5f;
+        [SerializeField] public float slipTime = 0f;
+        public float slipForce = 70f;
+            
         private bool isInvertedPerspective = false;
         public bool isHoldingBroom = false;
+
+        private Quaternion rotation;
 
         private void Start()
         {
@@ -28,10 +34,39 @@ namespace __ProjectMain.Scripts.Player
                 Debug.LogError("Player transform is null, assign it to Wizard dude prefab!!!!");
             }
             rb = GetComponent<Rigidbody>();
+            rotation = transform.rotation;
+        }
+
+        public void Slip()
+        {
+            if (slipTime <= 0)
+            {
+                rotation = transform.rotation;
+                slipTime = maxSlipTime;
+                rb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
+                rb.AddTorque(new Vector3(0, slipForce, 0), ForceMode.Impulse);
+            }
         }
         
         private void Update()
         {
+
+            slipTime -= Time.deltaTime;
+            if (slipTime >= 2f)
+            {
+                return;
+            }
+
+            if (slipTime <= 2f)
+            {
+                rb.constraints |= RigidbodyConstraints.FreezeRotationY;
+                transform.rotation = rotation;
+            }
+
+            if (slipTime <= 0)
+            {
+                slipTime = 0;
+            }
             
             // Use broom, clears item
             if (Input.GetKeyDown(KeyCode.B))
