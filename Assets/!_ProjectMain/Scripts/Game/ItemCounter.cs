@@ -11,7 +11,7 @@ namespace __ProjectMain.Scripts.Game
         public Color shelfColor;
         public int itemCount;
         public int maxItems = 10;
-        public int restockAmount = 5;
+        public int restockAmount = 10;
         public int minPrice = 5;
         public int maxPrice = 10;
         private AudioSource _audioSource;

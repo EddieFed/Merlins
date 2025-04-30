@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 234296669}
   - component: {fileID: 234296668}
   - component: {fileID: 234296671}
+  - component: {fileID: 234296672}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -504,8 +505,8 @@ Camera:
   m_GameObject: {fileID: 234296667}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31992164, g: 0.38775083, b: 0.4943396, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -605,6 +606,15 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!45 &234296672
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234296667}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 8202c457dff32486ba5ae1f2f548d983, type: 2}
 --- !u!1 &363969054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82be4586a1c24e7ea2893007aa449e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   menuCanvas: {fileID: 190808231}
   hostBtn: {fileID: 474934267}
   clientBtn: {fileID: 560968730}
@@ -3420,7 +3429,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.85
+  m_fontSize: 26.85
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1

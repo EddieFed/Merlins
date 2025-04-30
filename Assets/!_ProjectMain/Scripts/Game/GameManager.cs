@@ -35,6 +35,7 @@ namespace __ProjectMain.Scripts.Game
         public TextMeshProUGUI bankText;
         public TextMeshProUGUI customerText;
         public TextMeshProUGUI satisfactionText;
+        public TextMeshProUGUI finalBankText;
 
         public static float ConfirmedSatisfaction = 0.0f;
         public static int ConfirmedCustomers = 0;
@@ -47,6 +48,11 @@ namespace __ProjectMain.Scripts.Game
             endMenu.SetActive(false);
             playAgainBtn.onClick.AddListener(() =>
             {
+                GameManager.ConfirmedCustomers = 0;
+                GameManager.ConfirmedSatisfaction = 0.0f;
+                GameManager.bankValue = 0;
+                CustomerSpawner.currCustomerCount = 0;
+                SlimeSpawner.currSlimeCount = 0;
                 SceneManager.LoadScene("Scene01 - Supermarket");
             });
             mainMenuBtn.onClick.AddListener(() =>
@@ -96,10 +102,11 @@ namespace __ProjectMain.Scripts.Game
                     clockText.text = "CLOSED";
                     NPCManager.GetComponent<CustomerSpawner>().enabled = false;
                     NPCManager.GetComponent<SlimeSpawner>().enabled = false;
+                    finalBankText.text = $"You earned ${bankValue}";
                     endMenu.SetActive(true);
+                    state = STATE.COMPLETED;
                     break;
                 case STATE.COMPLETED:
-                    // Round over logic here
                     break;
             }
         }
